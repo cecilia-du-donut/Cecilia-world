@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-hot-pink: #F000D8;
+    --color-secondary-grey: #D0D0D0;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+.font-editorial {
+  font-family: 'Syne', 'Anton', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.text-hot-pink {
+  color: #F000D8;
+}
+
+.bg-hot-pink {
+  background-color: #F000D8;
+}
+
+.border-hot-pink {
+  border-color: #F000D8;
+}
