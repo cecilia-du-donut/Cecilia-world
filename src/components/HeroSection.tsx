@@ -41,21 +41,25 @@ export const HeroSection: React.FC = () => {
   return (
     <section className="relative w-full min-h-screen bg-white select-none overflow-x-hidden">
       {/* ========================================================================= */}
-      {/* DESKTOP FULL-SCREEN EDITORIAL COLLAGE                                     */}
-      {/* Zoned composition: top photo strip → oversized typography → focal portrait */}
-      {/* → supporting photos → clean identity block. No bottom bleed.              */}
+      {/* DESKTOP FULL-SCREEN EDITORIAL COLLAGE (Strictly Replicating Reference Image)*/}
       {/* ========================================================================= */}
       <div className="hidden md:block relative w-full h-screen overflow-hidden bg-white">
-
+        
         {/* ----------------------------------------------------------------------- */}
-        {/* LAYER 1: BACKGROUND PHOTOS — top strip, sitting behind typography (z-10) */}
+        {/* LAYER 1: PHOTOS SITTING BEHIND OR FLUSH WITH TYPOGRAPHY (z-10)          */}
         {/* ----------------------------------------------------------------------- */}
 
         {/* 1. TOP-LEFT PHOTO (Rome Alleyway / Yellow Backless Dress) */}
+        {/* Reference position: x: ~3% to ~19%, y: 0% to ~34% */}
         <div
           onClick={() => setActivePhoto(photos.topLeft)}
           className="absolute z-10 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '3%', top: '0%', width: '15vw', height: '25vh' }}
+          style={{
+            left: '3%',
+            top: '0%',
+            width: '16.5vw',
+            height: '34vh',
+          }}
           title="Click to expand photo"
         >
           <div className="w-full h-full overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_30px_rgba(240,0,216,0.25)] transition-shadow">
@@ -69,10 +73,16 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* 2. TOP MID-LEFT PHOTO (Trench Coat & Open Sky Landscape) */}
+        {/* Reference position: x: ~34% to ~47%, y: 0% to ~13.5% */}
         <div
           onClick={() => setActivePhoto(photos.topMid)}
           className="absolute z-10 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '33%', top: '0%', width: '12vw', height: '14vh' }}
+          style={{
+            left: '34%',
+            top: '0%',
+            width: '13.5vw',
+            height: '13.5vh',
+          }}
           title="Click to expand photo"
         >
           <div className="w-full h-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] group-hover:shadow-[0_8px_25px_rgba(240,0,216,0.25)] transition-shadow">
@@ -85,11 +95,17 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 3. RIGHT EDGE CROPPED PHOTO (Crimson Dress Seated) — behind text, right edge */}
+        {/* 3. RIGHT EDGE CROPPED PHOTO (Crimson Dress Seated) */}
+        {/* Reference position: x: ~95% to 102%, y: ~10% to ~48% */}
         <div
           onClick={() => setActivePhoto(photos.rightEdge)}
           className="absolute z-10 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '91%', top: '14vh', width: '8.5vw', height: '34vh' }}
+          style={{
+            left: '94.5%',
+            top: '11vh',
+            width: '10vw',
+            height: '38vh',
+          }}
           title="Click to expand photo"
         >
           <div className="w-full h-full overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_30px_rgba(240,0,216,0.25)] transition-shadow">
@@ -104,59 +120,52 @@ export const HeroSection: React.FC = () => {
 
         {/* ----------------------------------------------------------------------- */}
         {/* LAYER 2: OVERSIZED TYPOGRAPHY IN ELECTRIC MAGENTA #F000D8 (z-20)         */}
-        {/* Positioned in upper-middle zone — no bottom bleed, fully contained       */}
+        {/* Spanning across the screen and bleeding to bottom like reference        */}
         {/* ----------------------------------------------------------------------- */}
-
-        {/* Row 1: CECILIA — upper area, left-aligned, spanning wide */}
-        <div className="absolute z-20 pointer-events-none overflow-hidden" style={{ left: '2%', top: '20vh' }}>
-          <h1
-            className="font-editorial font-extrabold text-[#F000D8] tracking-[-0.05em] leading-[0.82] select-none text-left whitespace-nowrap"
-            style={{ fontSize: 'clamp(6rem, 13.5vw, 18rem)' }}
+        <div className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-end overflow-hidden">
+          {/* Row 1: CECILIA spanning full horizontal canvas */}
+          <div 
+            className="w-full px-2 sm:px-4 overflow-visible"
+            style={{ marginBottom: '16.5vh' }}
           >
-            CECILIA
-          </h1>
-        </div>
+            <h1 
+              className="font-editorial font-extrabold text-[#F000D8] tracking-[-0.05em] leading-[0.82] select-none text-left whitespace-nowrap"
+              style={{
+                fontSize: 'clamp(7.5rem, 17.2vw, 23rem)',
+              }}
+            >
+              CECILIA
+            </h1>
+          </div>
 
-        {/* Row 2: DU — below CECILIA, offset left, overlapping with focal portrait */}
-        <div className="absolute z-20 pointer-events-none overflow-hidden" style={{ left: '2%', top: '46vh' }}>
-          <div
-            className="font-editorial font-extrabold text-[#F000D8] tracking-[-0.05em] leading-[0.80] select-none whitespace-nowrap"
-            style={{ fontSize: 'clamp(6rem, 13.5vw, 18rem)' }}
-          >
-            DU
+          {/* Row 2: DU at bottom left, bleeding past bottom edge like 'Levitt' in reference */}
+          <div className="w-full px-2 sm:px-4 relative -mt-[14.5vh] -mb-[8.5vh]">
+            <div 
+              className="font-editorial font-extrabold text-[#F000D8] tracking-[-0.05em] leading-[0.80] select-none whitespace-nowrap"
+              style={{
+                fontSize: 'clamp(7.5rem, 17.2vw, 23rem)',
+              }}
+            >
+              DU
+            </div>
           </div>
         </div>
 
         {/* ----------------------------------------------------------------------- */}
-        {/* LAYER 3: FOCAL PORTRAIT — Red Rubber Gloves (z-30)                       */}
-        {/* The primary visual anchor — largest photo, centered, strongest shadow     */}
-        {/* ----------------------------------------------------------------------- */}
-        <div
-          onClick={() => setActivePhoto(photos.center)}
-          className="absolute z-30 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '37%', top: '36vh', width: '17vw', height: '42vh' }}
-          title="Centerpiece Photo: Click to expand"
-        >
-          <div className="w-full h-full overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.15)] border border-black/5 group-hover:border-[#F000D8] group-hover:shadow-[0_14px_50px_rgba(240,0,216,0.35)] transition-all">
-            <img
-              src={photos.center.src}
-              alt={photos.center.caption}
-              className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-500"
-              loading="eager"
-            />
-          </div>
-        </div>
-
-        {/* ----------------------------------------------------------------------- */}
-        {/* LAYER 3b: FOREGROUND SUPPORTING PHOTOS (z-30)                            */}
-        {/* Framing the focal portrait from the sides                                */}
+        {/* LAYER 3: FOREGROUND PHOTOS OVERLAPPING OVER THE PINK LETTERS (z-30)     */}
         {/* ----------------------------------------------------------------------- */}
 
         {/* 4. TOP MID-RIGHT PHOTO (Yellow Lace Top & Architectural Wall) */}
+        {/* Reference position: x: ~65% to ~80%, y: ~4% to ~42% (dropping over letters) */}
         <div
           onClick={() => setActivePhoto(photos.topRight)}
           className="absolute z-30 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '66%', top: '2vh', width: '13vw', height: '30vh' }}
+          style={{
+            left: '64.5%',
+            top: '4.5vh',
+            width: '14.8vw',
+            height: '38vh',
+          }}
           title="Click to expand photo"
         >
           <div className="w-full h-full overflow-hidden shadow-[0_6px_25px_rgba(0,0,0,0.08)] group-hover:shadow-[0_10px_35px_rgba(240,0,216,0.3)] transition-shadow">
@@ -169,11 +178,40 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 5. MID-RIGHT PHOTO (Barcelona Rooftop / Iridescent Purple Dress) */}
+        {/* 5. CENTER FOCAL PORTRAIT (Red Rubber Gloves & Black Jacket) */}
+        {/* Reference position: x: ~28% to ~40%, y: ~56% to ~88% (overlapping letters) */}
+        <div
+          onClick={() => setActivePhoto(photos.center)}
+          className="absolute z-30 cursor-pointer group transition-all duration-300 hover:z-35"
+          style={{
+            left: '28%',
+            top: '54vh',
+            width: '15vw',
+            height: '37vh',
+          }}
+          title="Centerpiece Photo: Click to expand"
+        >
+          <div className="w-full h-full overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-black/5 group-hover:border-[#F000D8] group-hover:shadow-[0_12px_45px_rgba(240,0,216,0.35)] transition-all">
+            <img
+              src={photos.center.src}
+              alt={photos.center.caption}
+              className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-500"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+        {/* 6. MID-RIGHT PHOTO (Barcelona Rooftop / Iridescent Purple Dress) */}
+        {/* Reference position: x: ~60% to ~75%, y: ~50% to ~88% (overlapping letters) */}
         <div
           onClick={() => setActivePhoto(photos.midRight)}
           className="absolute z-30 cursor-pointer group transition-all duration-300 hover:z-35"
-          style={{ left: '70%', top: '44vh', width: '14vw', height: '33vh' }}
+          style={{
+            left: '59.5%',
+            top: '49vh',
+            width: '15.2vw',
+            height: '37vh',
+          }}
           title="Click to expand photo"
         >
           <div className="w-full h-full overflow-hidden shadow-[0_6px_25px_rgba(0,0,0,0.08)] group-hover:shadow-[0_10px_35px_rgba(240,0,216,0.3)] transition-shadow">
@@ -187,11 +225,14 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* ----------------------------------------------------------------------- */}
-        {/* LAYER 4: IDENTITY BLOCK (z-40) — clean, unobstructed bottom-left         */}
+        {/* LAYER 4: INDEPENDENT IDENTITY BLOCK (z-40, Unblocked, Clean)            */}
         {/* ----------------------------------------------------------------------- */}
-        <div
+        <div 
           className="absolute z-40 pointer-events-auto flex flex-col gap-1 select-text"
-          style={{ left: '4%', bottom: '5vh' }}
+          style={{
+            left: '4%',
+            bottom: '5.5vh',
+          }}
         >
           <h2 className="font-editorial font-extrabold text-2xl lg:text-3xl tracking-tight text-black leading-tight">
             CECILIA DU
@@ -200,12 +241,6 @@ export const HeroSection: React.FC = () => {
             CREATIVE MARKETER · CONTENT CREATOR
           </p>
         </div>
-
-        {/* Editorial divider line above identity block */}
-        <div
-          className="absolute z-20 pointer-events-none"
-          style={{ left: '4%', bottom: '12vh', width: '24vw', height: '1px', backgroundColor: '#D0D0D0' }}
-        />
       </div>
 
       {/* ========================================================================= */}
