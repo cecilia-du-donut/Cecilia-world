@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" fill="none">
+  <!-- Acid-lime hand-drawn organic double oval & sketch ticks -->
+  <path d="M22 104 C18 68 78 28 144 26 C178 25 186 52 154 78 C118 106 46 128 28 96 C14 70 64 38 134 36 C168 35 174 56 146 74" stroke="#cce628" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92" />
+  <path d="M158 104 C166 112 176 116 186 114" stroke="#cce628" stroke-width="2.4" stroke-linecap="round" opacity="0.85" />
+  <path d="M168 92 L174 102 M179 98 L168 102" stroke="#cce628" stroke-width="2.2" stroke-linecap="round" opacity="0.82" />
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" width="420" height="420">
+  <defs>
+    <!-- Cold-press rag paper tooth -->
+    <filter id="paper-tooth" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="5" stitchTiles="stitch" seed="7" result="tooth" />
+      <feColorMatrix type="matrix" values="0.24 0 0 0 0.44  0 0.22 0 0 0.34  0 0 0.2 0 0.38  0 0 0 0.32 0" in="tooth" />
+    </filter>
+    <!-- Soft aged tea-stain & vintage parchment mottling -->
+    <filter id="vintage-mottle" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" stitchTiles="stitch" seed="19" result="clouds" />
+      <feColorMatrix type="matrix" values="0.34 0 0 0 0.14  0 0.16 0 0 0.05  0 0 0.2 0 0.06  0 0 0 0.34 0" in="clouds" />
+    </filter>
+    <!-- Subtle traditional laid-paper rib weave -->
+    <pattern id="laid-lines" width="18" height="18" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="3" x2="18" y2="3" stroke="#fff0d9" stroke-width="0.45" stroke-opacity="0.08" />
+      <line x1="0" y1="9" x2="18" y2="9" stroke="#260717" stroke-width="0.4" stroke-opacity="0.07" />
+      <line x1="0" y1="15" x2="18" y2="15" stroke="#fff0d9" stroke-width="0.4" stroke-opacity="0.06" />
+      <line x1="6" y1="0" x2="6" y2="18" stroke="#260717" stroke-width="0.35" stroke-opacity="0.045" />
+    </pattern>
+  </defs>
+
+  <rect width="420" height="420" filter="url(#paper-tooth)" />
+  <rect width="420" height="420" filter="url(#vintage-mottle)" opacity="0.82" />
+  <rect width="420" height="420" fill="url(#laid-lines)" />
+
+  <!-- Warm aged paper fibers (cream & hemp highlights) -->
+  <g fill="none" stroke="#fff0d9" stroke-linecap="round" opacity="0.18">
+    <path d="M18 34 Q30 28 45 36" stroke-width="0.7" />
+    <path d="M98 18 Q110 27 121 22" stroke-width="0.6" />
+    <path d="M192 48 Q206 41 220 52" stroke-width="0.65" />
+    <path d="M306 26 Q318 37 332 32" stroke-width="0.6" />
+    <path d="M376 58 Q389 52 404 61" stroke-width="0.65" />
+    <path d="M58 106 Q68 119 63 132" stroke-width="0.65" />
+    <path d="M148 94 Q165 89 178 99" stroke-width="0.6" />
+    <path d="M254 118 Q268 109 284 121" stroke-width="0.7" />
+    <path d="M356 104 Q366 117 359 131" stroke-width="0.6" />
+    <path d="M32 192 Q47 184 59 195" stroke-width="0.65" />
+    <path d="M134 176 Q146 189 161 185" stroke-width="0.6" />
+    <path d="M236 204 Q251 196 264 208" stroke-width="0.65" />
+    <path d="M332 186 Q344 198 358 193" stroke-width="0.6" />
+    <path d="M78 272 Q91 264 108 273" stroke-width="0.7" />
+    <path d="M188 286 Q198 299 212 293" stroke-width="0.6" />
+    <path d="M288 266 Q303 259 318 269" stroke-width="0.65" />
+    <path d="M372 292 Q384 303 398 298" stroke-width="0.6" />
+    <path d="M44 358 Q59 350 72 362" stroke-width="0.65" />
+    <path d="M148 372 Q161 362 176 374" stroke-width="0.6" />
+    <path d="M250 352 Q262 365 276 359" stroke-width="0.7" />
+    <path d="M344 374 Q358 366 371 378" stroke-width="0.6" />
+  </g>
+
+  <!-- Vintage dark ink/mineral fibers & subtle foxing speckles -->
+  <g fill="none" stroke="#260616" stroke-linecap="round" opacity="0.19">
+    <path d="M74 44 Q84 54 96 49" stroke-width="0.65" />
+    <path d="M170 28 Q182 37 177 50" stroke-width="0.6" />
+    <path d="M282 62 Q295 55 308 65" stroke-width="0.65" />
+    <path d="M24 146 Q36 139 48 150" stroke-width="0.6" />
+    <path d="M214 152 Q225 163 238 158" stroke-width="0.65" />
+    <path d="M322 146 Q334 139 346 150" stroke-width="0.6" />
+    <path d="M94 228 Q104 240 118 235" stroke-width="0.65" />
+    <path d="M198 242 Q211 234 223 245" stroke-width="0.6" />
+    <path d="M352 234 Q364 227 377 237" stroke-width="0.65" />
+    <path d="M56 318 Q68 330 81 324" stroke-width="0.6" />
+    <path d="M168 322 Q181 315 194 326" stroke-width="0.65" />
+    <path d="M278 328 Q290 339 303 334" stroke-width="0.6" />
+  </g>
+  <g fill="#260616" opacity="0.17">
+    <circle cx="48" cy="78" r="1.05" />
+    <circle cx="144" cy="134" r="0.85" />
+    <circle cx="272" cy="84" r="1.15" />
+    <circle cx="382" cy="158" r="0.9" />
+    <circle cx="86" cy="202" r="1" />
+    <circle cx="224" cy="268" r="1.1" />
+    <circle cx="318" cy="214" r="0.85" />
+    <circle cx="128" cy="348" r="0.95" />
+    <circle cx="298" cy="386" r="0.9" />
+    <circle cx="394" cy="346" r="1.05" />
+  </g>
+  <g fill="#fff0d9" opacity="0.12">
+    <circle cx="112" cy="64" r="1.1" />
+    <circle cx="242" cy="142" r="0.95" />
+    <circle cx="164" cy="252" r="1.15" />
+    <circle cx="348" cy="274" r="0.9" />
+    <circle cx="66" cy="382" r="1.05" />
+  </g>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Soft warm-cream & light-taupe irregular parchment wash gradients -->
+    <linearGradient id="parch-base" x1="8%" y1="6%" x2="92%" y2="94%">
+      <stop offset="0%" stop-color="#f7f0e2" />
+      <stop offset="46%" stop-color="#f2e6d0" />
+      <stop offset="100%" stop-color="#eadbc2" />
+    </linearGradient>
+
+    <linearGradient id="parch-wash-taupe" x1="15%" y1="85%" x2="85%" y2="15%">
+      <stop offset="0%" stop-color="#dec9aa" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#eadac0" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#f9f3e8" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="parch-wash-blush" x1="85%" y1="12%" x2="20%" y2="88%">
+      <stop offset="0%" stop-color="#e8d0cf" stop-opacity="0.34" />
+      <stop offset="55%" stop-color="#efe0d4" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#f7efe1" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Gentle organic watercolor & aging distortion -->
+    <filter id="parch-bloom" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0055" numOctaves="4" seed="21" result="warp" />
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="180" xChannelSelector="R" yChannelSelector="G" result="warped" />
+      <feGaussianBlur in="warped" stdDeviation="48" />
+    </filter>
+
+    <!-- Fine tactile cotton rag paper tooth & subtle pigment settling -->
+    <filter id="parch-grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" seed="9" result="tooth" />
+      <feColorMatrix type="matrix" values="0.14 0 0 0 0.42  0 0.12 0 0 0.36  0 0 0.1 0 0.28  0 0 0 0.085 0" in="tooth" />
+    </filter>
+
+    <!-- Subtle warm deckled & tea-toned edge mottling -->
+    <filter id="parch-mottle" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.024" numOctaves="4" seed="37" result="clouds" />
+      <feColorMatrix type="matrix" values="0.22 0 0 0 0.45  0 0.18 0 0 0.34  0 0 0.14 0 0.22  0 0 0 0.09 0" in="clouds" />
+    </filter>
+  </defs>
+
+  <!-- Warm cream parchment base -->
+  <rect width="1600" height="1000" fill="url(#parch-base)" />
+
+  <!-- Organic irregular watercolor & subtle parchment washes -->
+  <g filter="url(#parch-bloom)">
+    <path d="M-120,260 C160,170 480,250 610,470 C720,660 510,940 190,1040 L-160,1040 Z" fill="url(#parch-wash-taupe)" />
+    <path d="M980,-100 L1680,-100 L1680,580 C1410,630 1150,510 1030,300 C930,130 910,-20 980,-100 Z" fill="url(#parch-wash-blush)" />
+    <path d="M460,140 C740,70 1040,180 1090,420 C1140,650 880,820 590,760 C350,710 290,270 460,140 Z" fill="#f9f3e7" opacity="0.52" />
+    <path d="M840,640 C1100,560 1440,610 1660,790 L1660,1080 L760,1080 C740,910 750,720 840,640 Z" fill="url(#parch-wash-taupe)" />
+  </g>
+
+  <!-- Subtle paper mottling & tactile fiber grain -->
+  <rect width="1600" height="1000" filter="url(#parch-mottle)" />
+  <rect width="1600" height="1000" filter="url(#parch-grain)" />
+</svg>

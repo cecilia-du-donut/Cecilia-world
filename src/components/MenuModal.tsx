@@ -1,119 +1,134 @@
-import React, { useState } from 'react';
-import { X, ArrowUpRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { MENU_ITEMS } from '../data/menuItems';
+import './MenuModal.css';
 
 interface MenuModalProps {
-  isOpen: boolean;
+  activePath: string;
+  onNavigate: (path: string) => void;
   onClose: () => void;
 }
 
-interface MenuItem {
-  id: string;
-  title: string;
-}
+export const MenuModal: React.FC<MenuModalProps> = ({
+  activePath,
+  onNavigate,
+  onClose,
+}) => {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-const MENU_ITEMS: MenuItem[] = [
-  { id: '01', title: 'ABOUT' },
-  { id: '02', title: 'SERVICES' },
-  { id: '03', title: 'SELECTED WORK' },
-  { id: '04', title: 'PLAYGROUND' },
-  { id: '05', title: 'SCRAPBOOK' },
-];
+  useEffect(() => {
+    setHoveredId(null);
 
-export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
-  const [activeItem, setActiveItem] = useState<string>('01');
-  const [feedback, setFeedback] = useState<string | null>(null);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
 
-  if (!isOpen) return null;
-
-  const handleItemClick = (title: string) => {
-    setFeedback(`${title} will be launched in the next stage.`);
-    setTimeout(() => {
-      setFeedback(null);
-    }, 2400);
-  };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-between p-6 sm:p-8 md:p-12 lg:p-14 select-none animate-in fade-in duration-200">
-      {/* Top Bar: Brand and Close */}
-      <div className="w-full flex items-center justify-between border-b border-[#D0D0D0] pb-5">
-        <span className="font-editorial text-lg md:text-xl font-black tracking-tight text-[#F000B8]">
-          CECILIA&apos;S WORLD
-        </span>
-        <button
-          onClick={onClose}
-          className="group flex items-center gap-2 font-editorial text-sm md:text-base font-bold tracking-widest text-[#F000B8] hover:opacity-80 transition-opacity cursor-pointer uppercase py-1"
-          aria-label="Close menu"
+    <section
+      className="cw-menu-sheet flex flex-col justify-between overflow-x-hidden px-5 py-6 sm:px-10 sm:py-8 md:px-14 md:py-10 lg:px-20 lg:py-11 select-none"
+      aria-label="Site Navigation Menu"
+    >
+      {/* Top Editorial Spread Header: CECILIA'S WORLD® (left) and CLOSE × (right) */}
+      <header className="cw-menu-sheet__inner w-full max-w-6xl mx-auto flex items-center justify-between border-b border-[#583A38]/22 pb-4 sm:pb-5 shrink-0">
+        <a
+          href="/"
+          onClick={(event) => {
+            event.preventDefault();
+            onClose();
+          }}
+          className="font-sans text-sm sm:text-base font-extrabold tracking-wide text-[#3A1222] hover:text-[#F000D8] transition-colors duration-200 uppercase"
         >
-          <span>CLOSE ×</span>
-        </button>
-      </div>
+          CECILIA&apos;S WORLD<span className="align-super text-[0.62em] tracking-normal">&reg;</span>
+        </a>
 
-      {/* Five Unified Editorial Rows (Fit entirely in 1 Desktop Viewport without scrolling) */}
-      <div className="my-auto w-full max-w-5xl mx-auto py-2">
-        <nav className="w-full flex flex-col divide-y divide-[#D0D0D0]">
+        <span className="hidden md:inline-block cw-mono text-[11px] tracking-[0.22em] text-[#7D665D] uppercase">
+          INDEX / CONTENTS
+        </span>
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="cw-mono text-xs sm:text-sm font-bold tracking-[0.16em] text-[#3A1222] hover:text-[#F000D8] transition-colors duration-200 cursor-pointer uppercase py-1"
+          aria-label="Close menu and return to homepage"
+        >
+          CLOSE ×
+        </button>
+      </header>
+
+      {/* Six-Item Y2K × Vintage Editorial Magazine Directory */}
+      <div className="cw-menu-sheet__inner w-full max-w-5xl mx-auto my-auto py-6 sm:py-8 md:py-9">
+        <nav
+          aria-label="Primary sections"
+          className="w-full flex flex-col divide-y divide-[#583A38]/20 border-y border-[#583A38]/20"
+        >
           {MENU_ITEMS.map((item) => {
-            const isSelected = activeItem === item.id;
+            const isCurrentRoute = activePath === item.path;
+            const isHovered = hoveredId === item.id;
+            const isHighlighted = isCurrentRoute || isHovered;
+
             return (
-              <div
+              <a
                 key={item.id}
-                onMouseEnter={() => setActiveItem(item.id)}
-                onClick={() => handleItemClick(item.title)}
-                className="group flex items-center justify-between py-4 sm:py-5 md:py-6 lg:py-7 cursor-pointer transition-colors duration-200"
+                href={item.path}
+                aria-current={isCurrentRoute ? 'page' : undefined}
+                onMouseEnter={() => setHoveredId(item.id)}
+                onMouseLeave={() => setHoveredId((prev) => (prev === item.id ? null : prev))}
+                onFocus={() => setHoveredId(item.id)}
+                onBlur={() => setHoveredId((prev) => (prev === item.id ? null : prev))}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigate(item.path);
+                }}
+                className={`cw-menu-row group flex items-center justify-between gap-2 sm:gap-5 py-4 sm:py-5 md:py-[1.35rem] cursor-pointer focus:outline-none ${
+                  isHighlighted ? 'cw-menu-row--active' : ''
+                }`}
               >
-                {/* Left: Aligned Number */}
+                {/* Left: Small warm taupe-grey editorial folio number */}
                 <span
-                  className={`w-12 sm:w-16 md:w-20 font-mono text-sm sm:text-base md:text-lg font-medium tracking-wider transition-colors duration-200 ${
-                    isSelected ? 'text-[#F000B8]' : 'text-[#D0D0D0]'
+                  className={`cw-menu-row-num w-9 sm:w-14 md:w-16 shrink-0 cw-mono text-xs sm:text-sm tracking-[0.16em] ${
+                    isHighlighted ? 'text-[#F000D8]' : 'text-[#8B756A]'
                   }`}
                 >
                   {item.id}
                 </span>
 
-                {/* Center: Scaled Title (Single line, ~10-15% reduced for optimal balance) */}
-                <div className="flex-1 min-w-0 pr-4 flex items-center overflow-hidden">
-                  <span
-                    className={`font-editorial font-extrabold tracking-tight whitespace-nowrap transition-colors duration-200 text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] ${
-                      isSelected ? 'text-[#F000B8]' : 'text-black'
-                    }`}
-                  >
-                    {item.title}
-                  </span>
-                </div>
+                {/* Center: Wide geometric Y2K display title */}
+                <span
+                  className={`cw-menu-row-title cw-menu-y2k-title flex-1 min-w-0 text-[clamp(1.06rem,4.05vw,2.35rem)] ${
+                    isHighlighted ? 'text-[#F000D8]' : 'text-[#3A1222]'
+                  }`}
+                >
+                  {item.title}
+                </span>
 
-                {/* Right: Clean minimal directional arrow */}
-                <div className="w-12 sm:w-16 md:w-20 flex-shrink-0 flex items-center justify-end">
+                {/* Right: Crisp editorial diagonal arrow */}
+                <span className="w-7 sm:w-12 shrink-0 flex items-center justify-end">
                   <ArrowUpRight
-                    className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-200 ${
-                      isSelected
-                        ? 'opacity-100 text-[#F000B8] translate-x-1 -translate-y-1'
-                        : 'opacity-25 text-black group-hover:opacity-100 group-hover:text-[#F000B8]'
+                    strokeWidth={1.85}
+                    className={`cw-menu-row-arrow w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ${
+                      isHighlighted ? 'text-[#F000D8] opacity-100' : 'text-[#5A3442]/55 opacity-80'
                     }`}
                   />
-                </div>
-              </div>
+                </span>
+              </a>
             );
           })}
         </nav>
       </div>
 
-      {/* Bottom Bar: Clean identity & credit */}
-      <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between border-t border-[#D0D0D0] pt-5 gap-2 text-xs md:text-sm font-medium text-black/60">
-        <div>
-          <span className="font-bold text-black">CECILIA DU</span>
-          <span className="mx-2 text-black/30">|</span>
-          <span className="text-[#F000B8] font-semibold">CREATIVE MARKETER · CONTENT CREATOR</span>
-        </div>
-        <div className="font-mono text-[11px] tracking-wider text-black/40">
-          CECILIA&apos;S WORLD
-        </div>
-      </div>
-
-      {/* Temporary Feedback Notification */}
-      {feedback && (
-        <div className="fixed bottom-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs md:text-sm font-medium px-5 py-2.5 rounded-none shadow-xl border-l-2 border-[#F000B8] transition-all">
-          {feedback}
-        </div>
-      )}
-    </div>
+      {/* Subtle magazine print folio footer margin */}
+      <footer className="cw-menu-sheet__inner w-full max-w-6xl mx-auto flex items-center justify-between pt-3 text-[10px] sm:text-[11px] cw-mono tracking-[0.18em] text-[#8B756A] uppercase shrink-0">
+        <span>ISSUE 01 — DIRECTORY</span>
+        <span className="cw-serif italic normal-case tracking-normal text-xs sm:text-sm text-[#6E4D53]">
+          Cecilia Du Studio
+        </span>
+      </footer>
+    </section>
   );
 };

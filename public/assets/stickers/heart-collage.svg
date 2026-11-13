@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 170" fill="none">
+  <defs>
+    <filter id="heart-paper-grain" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="11" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.96  0 0 0 0 0.89  0 0 0 0 0.82  0 0 0 0.14 0" in="noise" result="tint" />
+      <feBlend mode="soft-light" in="SourceGraphic" in2="tint" />
+    </filter>
+    <pattern id="heart-halftone" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.2" fill="#8b2d52" fill-opacity="0.22" />
+      <circle cx="7" cy="7" r="1.1" fill="#8b2d52" fill-opacity="0.18" />
+    </pattern>
+  </defs>
+  <!-- Hand-torn vintage cream paper silhouette backing -->
+  <path d="M89 156 L66 138 L44 120 L25 99 L14 75 L15 51 L27 31 L48 20 L70 22 L89 35 L108 20 L131 19 L153 29 L166 49 L166 74 L154 98 L134 120 L111 139 Z" fill="#fff0d9" filter="url(#heart-paper-grain)" />
+  <!-- Dusty rose watercolor heart cut inside the cream sticker -->
+  <path d="M89 140 C66 121 31 95 29 63 C28 43 44 31 61 33 C74 35 83 43 89 54 C95 43 105 34 118 32 C136 30 151 43 150 63 C148 95 113 121 89 140 Z" fill="#d9879f" fill-opacity="0.92" />
+  <path d="M89 140 C66 121 31 95 29 63 C28 43 44 31 61 33 C74 35 83 43 89 54 C95 43 105 34 118 32 C136 30 151 43 150 63 C148 95 113 121 89 140 Z" fill="url(#heart-halftone)" />
+  <!-- Delicate editorial burgundy ink sketch double outline -->
+  <path d="M89 141 C64 122 30 95 29 63 C28 43 44 31 61 33 C74 35 83 43 89 54 C95 43 105 34 118 32 C136 30 151 43 150 63 C148 95 114 122 89 141 Z" stroke="#481a34" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.88" />
+  <path d="M90 133 C70 117 40 94 38 66 C37 50 50 40 63 42 C74 43 82 50 88 60" stroke="#fff0d9" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="4 6" opacity="0.72" />
+</svg>
