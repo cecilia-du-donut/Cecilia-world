@@ -17,7 +17,7 @@ export const PhotoLightbox: React.FC<PhotoLightboxProps> = ({ imageSrc, caption,
     >
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 text-white/80 hover:text-[#F000D8] transition-colors p-2 rounded-full border border-white/20 hover:border-[#F000D8] z-10 cursor-pointer"
+        className="absolute top-6 right-6 text-white/80 hover:text-[#F000B8] transition-colors p-2 rounded-full border border-white/20 hover:border-[#F000B8] z-10 cursor-pointer"
         aria-label="Close photo view"
       >
         <X className="w-6 h-6" />
@@ -33,7 +33,7 @@ export const PhotoLightbox: React.FC<PhotoLightboxProps> = ({ imageSrc, caption,
           className="w-auto h-auto max-h-[82vh] max-w-[90vw] object-contain mx-auto"
         />
         {caption && (
-          <div className="bg-black/80 text-white text-xs md:text-sm font-mono py-2.5 px-4 text-center tracking-wider text-[#F000D8]">
+          <div className="bg-black/80 text-white text-xs md:text-sm font-mono py-2.5 px-4 text-center tracking-wider text-[#F000B8]">
             {caption}
           </div>
         )}

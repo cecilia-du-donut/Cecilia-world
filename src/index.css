@@ -2,17 +2,22 @@
 
 @layer base {
   :root {
-    --color-hot-pink: #F000D8;
+    /* ── CECILIA'S WORLD® brand system ─────────────────────────────── */
+    --color-hot-pink: #F000B8;
+    --color-acid-lime: #D6EF00;
+    --color-burgundy: #481820;
+    --color-warm-cream: #F3EEDF;
+    --color-ink: #171717;
     --color-secondary-grey: #D0D0D0;
   }
-  
+
   html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
-    background-color: #FFFFFF;
-    color: #000000;
+    background-color: var(--color-warm-cream);
+    color: var(--color-ink);
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,19 +25,45 @@
   }
 }
 
+/* ── Typography tiers ────────────────────────────────────────────── */
 .font-editorial {
   font-family: 'Syne', 'Anton', -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.04em;
 }
 
+/* Display Sans — oversized editorial headlines */
+.cw-display {
+  font-family: 'Syne', 'Anton', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+/* Editorial Serif — story titles, quotes, standfirsts */
+.cw-serif {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.01em;
+}
+
+/* Monospace — labels, years, captions */
+.cw-mono {
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Handwritten — marginalia, doodles, scrapbook annotations */
+.cw-hand {
+  font-family: 'Caveat', 'Bradley Hand', cursive;
+}
+
+/* ── Legacy utility aliases (kept so existing components keep working) ── */
 .text-hot-pink {
-  color: #F000D8;
+  color: var(--color-hot-pink);
 }
 
 .bg-hot-pink {
-  background-color: #F000D8;
+  background-color: var(--color-hot-pink);
 }
 
 .border-hot-pink {
-  border-color: #F000D8;
+  border-color: var(--color-hot-pink);
 }

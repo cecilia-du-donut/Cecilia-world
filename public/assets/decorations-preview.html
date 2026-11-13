@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Y2K Decorative Asset Library</title>
+<style>
+:root{color-scheme:light;--cream:#fbf0df;--blush:#f2c5d0;--berry:#692844;--ink:#421c35}*{box-sizing:border-box}body{margin:0;padding:32px;color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 8% 4%,#f8dce1,transparent 34%),linear-gradient(135deg,#fff5e6,#f5e4d8 48%,#f1d6dc)}header{max-width:1440px;margin:0 auto 34px;padding:22px 26px;border:1px solid #b7788b;background:rgba(255,250,240,.76);box-shadow:8px 8px 0 rgba(105,40,68,.12)}h1{margin:0;font:italic 500 clamp(28px,5vw,52px)/1.05 Georgia,serif;letter-spacing:-.04em}header p{margin:10px 0 0;max-width:680px;color:#704256}.gallery{max-width:1440px;margin:auto}.category{margin:28px 0 38px}.category h2{display:flex;align-items:center;gap:12px;margin:0 0 13px;font:700 13px/1.2 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}.category h2:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,#bd7a8e,transparent)}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:14px}.card{min-height:190px;padding:12px 10px 10px;border:1px solid rgba(121,67,88,.25);background:rgba(255,250,242,.78);box-shadow:3px 4px 0 rgba(119,58,83,.09);display:flex;flex-direction:column;align-items:center;justify-content:space-between}.art{width:100%;height:145px;display:grid;place-items:center;background-color:#f7e8df;background-image:linear-gradient(45deg,rgba(207,154,169,.12) 25%,transparent 25%),linear-gradient(-45deg,rgba(207,154,169,.12) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(207,154,169,.12) 75%),linear-gradient(-45deg,transparent 75%,rgba(207,154,169,.12) 75%);background-size:18px 18px;background-position:0 0,0 9px,9px -9px,-9px 0}.art img{display:block;width:92%;height:92%;object-fit:contain}.name{align-self:stretch;margin-top:9px;color:#5b283f;font:12px/1.3 ui-monospace,monospace;overflow-wrap:anywhere}.missing{padding:30px;background:#fff3da;border:2px dashed #a23c65}
+@media(max-width:520px){body{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{min-height:170px}.art{height:125px}}
+</style></head><body><header><h1>Y2K Decorative Asset Library</h1><p>Standalone SVG assets · transparent backgrounds · no remote dependencies</p></header><main class="gallery" id="gallery"></main>
+<script>
+const categories = {"eyes": ["editorial-eye.svg", "eye-sparkle.svg", "halftone-eyes.svg"], "bows": ["satin-pink-bow.svg", "cream-bow.svg", "ribbon-loop.svg"], "butterflies": ["chrome-butterfly.svg", "pink-jelly-butterfly.svg"], "pearls": ["pearl-necklace.svg", "loose-pearls.svg", "pearl-charm.svg"], "crystals": ["crystal-heart.svg", "pink-gem.svg", "diamond-sparkle.svg", "chrome-heart.svg"], "stars": ["chrome-star.svg", "starburst.svg", "handdrawn-star.svg", "glitter-star.svg"], "hearts": ["pink-heart.svg", "heart-lock.svg", "handdrawn-heart.svg"], "jewelry": ["safety-pin.svg", "charm-pendant.svg", "silver-chain.svg"], "doodles": ["handdrawn-arrows.svg", "scribble-lines.svg", "handdrawn-circles.svg", "lipstick-kiss.svg", "sparkle-doodles.svg"], "paper": ["pink-torn-paper.svg", "cream-torn-paper.svg", "burgundy-paper.svg", "lime-washi-tape.svg", "pink-washi-tape.svg", "vintage-halftone.svg", "magazine-paper-scrap.svg"], "beauty": ["lipstick-print.svg", "mascara-lashes.svg", "compact-mirror.svg"]};
+const gallery = document.querySelector('#gallery');
+for (const [category, files] of Object.entries(categories)) {
+  const section = document.createElement('section'); section.className = 'category';
+  const heading = document.createElement('h2'); heading.textContent = category; section.append(heading);
+  const grid = document.createElement('div'); grid.className = 'grid';
+  for (const filename of files) {
+    const card = document.createElement('article'); card.className = 'card';
+    const art = document.createElement('div'); art.className = 'art';
+    const img = document.createElement('img'); img.src = `./decorations/${category}/${filename}`; img.alt = ''; img.loading = 'lazy';
+    const label = document.createElement('div'); label.className = 'name'; label.textContent = filename;
+    img.addEventListener('error', () => { art.classList.add('missing'); art.textContent = 'SVG not found'; });
+    art.append(img); card.append(art, label); grid.append(card);
+  }
+  section.append(grid); gallery.append(section);
+}
+</script></body></html>

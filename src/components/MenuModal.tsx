@@ -36,12 +36,12 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-[100] bg-white flex flex-col justify-between p-6 sm:p-8 md:p-12 lg:p-14 select-none animate-in fade-in duration-200">
       {/* Top Bar: Brand and Close */}
       <div className="w-full flex items-center justify-between border-b border-[#D0D0D0] pb-5">
-        <span className="font-editorial text-lg md:text-xl font-black tracking-tight text-[#F000D8]">
+        <span className="font-editorial text-lg md:text-xl font-black tracking-tight text-[#F000B8]">
           CECILIA&apos;S WORLD
         </span>
         <button
           onClick={onClose}
-          className="group flex items-center gap-2 font-editorial text-sm md:text-base font-bold tracking-widest text-[#F000D8] hover:opacity-80 transition-opacity cursor-pointer uppercase py-1"
+          className="group flex items-center gap-2 font-editorial text-sm md:text-base font-bold tracking-widest text-[#F000B8] hover:opacity-80 transition-opacity cursor-pointer uppercase py-1"
           aria-label="Close menu"
         >
           <span>CLOSE ×</span>
@@ -63,7 +63,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
                 {/* Left: Aligned Number */}
                 <span
                   className={`w-12 sm:w-16 md:w-20 font-mono text-sm sm:text-base md:text-lg font-medium tracking-wider transition-colors duration-200 ${
-                    isSelected ? 'text-[#F000D8]' : 'text-[#D0D0D0]'
+                    isSelected ? 'text-[#F000B8]' : 'text-[#D0D0D0]'
                   }`}
                 >
                   {item.id}
@@ -73,7 +73,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
                 <div className="flex-1 min-w-0 pr-4 flex items-center overflow-hidden">
                   <span
                     className={`font-editorial font-extrabold tracking-tight whitespace-nowrap transition-colors duration-200 text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] ${
-                      isSelected ? 'text-[#F000D8]' : 'text-black'
+                      isSelected ? 'text-[#F000B8]' : 'text-black'
                     }`}
                   >
                     {item.title}
@@ -85,8 +85,8 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
                   <ArrowUpRight
                     className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-200 ${
                       isSelected
-                        ? 'opacity-100 text-[#F000D8] translate-x-1 -translate-y-1'
-                        : 'opacity-25 text-black group-hover:opacity-100 group-hover:text-[#F000D8]'
+                        ? 'opacity-100 text-[#F000B8] translate-x-1 -translate-y-1'
+                        : 'opacity-25 text-black group-hover:opacity-100 group-hover:text-[#F000B8]'
                     }`}
                   />
                 </div>
@@ -101,7 +101,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
         <div>
           <span className="font-bold text-black">CECILIA DU</span>
           <span className="mx-2 text-black/30">|</span>
-          <span className="text-[#F000D8] font-semibold">CREATIVE MARKETER · CONTENT CREATOR</span>
+          <span className="text-[#F000B8] font-semibold">CREATIVE MARKETER · CONTENT CREATOR</span>
         </div>
         <div className="font-mono text-[11px] tracking-wider text-black/40">
           CECILIA&apos;S WORLD
@@ -110,7 +110,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
 
       {/* Temporary Feedback Notification */}
       {feedback && (
-        <div className="fixed bottom-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs md:text-sm font-medium px-5 py-2.5 rounded-none shadow-xl border-l-2 border-[#F000D8] transition-all">
+        <div className="fixed bottom-12 left-1/2 -translate-x-1/2 bg-black text-white text-xs md:text-sm font-medium px-5 py-2.5 rounded-none shadow-xl border-l-2 border-[#F000B8] transition-all">
           {feedback}
         </div>
       )}
