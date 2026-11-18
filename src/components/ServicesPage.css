@@ -1,0 +1,1215 @@
+/* Editorial Landscape Fashion Magazine Flipbook strictly scoped to /services */
+.cw-services {
+  --cream: #fff6ea;
+  --paper: #fbf4ea;
+  --paper-blush: #faeef0;
+  --blush: #f4d6db;
+  --candy-pink: #f48bb4;
+  --dusty: #c68597;
+  --burgundy: #481a34;
+  --wine-body: #542231;
+  --wine-muted: #7b4859;
+  --hot-pink: #f000d8;
+  position: relative;
+  min-height: 100svh;
+  overflow-x: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--wine-body);
+  background-color: var(--candy-pink);
+  padding: clamp(4.1rem, 7.2svh, 4.9rem) clamp(1.25rem, 3vw, 2.8rem) clamp(.65rem, 1.5svh, 1.15rem);
+}
+
+/* Ultra-subtle dry cardstock print grain on pure candy pink backdrop */
+.cw-services::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: '';
+  pointer-events: none;
+  opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ── Independent Poster Background Typography ("Creative" & "Stories") ─────── */
+.cw-services__bg-type {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cw-services__bg-word {
+  position: absolute;
+  left: 60%;
+  font-family: 'Yellowtail', 'Caveat', cursive;
+  font-weight: 400;
+  font-size: clamp(6.8rem, 18vw, 18.5rem);
+  line-height: .84;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  color: #360f1f;
+  opacity: .22;
+}
+
+.cw-services__bg-word--top {
+  top: clamp(.5rem, 1.4svh, 1.35rem);
+  transform: translateX(-50%) rotate(-3.5deg);
+}
+
+.cw-services__bg-word--bottom {
+  bottom: clamp(-1.8rem, -3.2svh, -.65rem);
+  transform: translateX(-50%) rotate(-2.5deg);
+}
+
+/* ── Desktop Asymmetric Workspace: Left Intro Column + Right Open Magazine ─── */
+.cw-services__workspace {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  max-width: 1360px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: clamp(235px, 23vw, 315px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.35rem, 3vw, 3rem);
+}
+
+.cw-services__intro-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: .25rem 0;
+}
+
+.cw-services__intro-kicker {
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(72, 26, 52, .85);
+}
+
+.cw-services__headline {
+  margin: .55rem 0 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.18rem, 1.62vw, 1.56rem);
+  font-weight: 700;
+  line-height: 1.24;
+  color: #360f1f;
+  max-width: 24ch;
+}
+
+.cw-services__intro {
+  margin: .9rem 0 0;
+  padding-top: .85rem;
+  border-top: 1px solid rgba(72, 26, 52, .22);
+  font-size: clamp(.82rem, .92vw, .94rem);
+  line-height: 1.62;
+  color: rgba(54, 15, 31, .92);
+  max-width: 34ch;
+}
+
+/* ── Right Magazine Desk Stage ─────────────────────────────────────────────── */
+.cw-zine-stage {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cw-zine-topbar,
+.cw-zine-book-wrap,
+.cw-zine-controls {
+  width: min(940px, 100%, calc(72svh * 1.64));
+}
+
+/* Compact bar holding folio kicker + CLOSE directly above the magazine */
+.cw-zine-topbar {
+  position: relative;
+  z-index: 8;
+  margin-bottom: .35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.25rem;
+}
+
+.cw-zine-topbar__kicker {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(72, 26, 52, .82);
+  white-space: nowrap;
+}
+
+.cw-zine-close {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  min-height: 32px;
+  padding: .26rem .82rem;
+  border: 1px solid rgba(72, 26, 52, .34);
+  background: rgba(255, 246, 234, .92);
+  color: var(--burgundy);
+  font-family: 'Space Mono', monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(54, 15, 31, .12);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.cw-zine-close:hover,
+.cw-zine-close:focus-visible {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--cream);
+  transform: translate3d(0, -1px, 0);
+  outline: none;
+}
+
+.cw-zine-close:focus-visible {
+  outline: 2px solid #fff6ea;
+  outline-offset: 3px;
+}
+
+/* Delicate layered paper sheets tucked under open spread edges */
+.cw-zine-book-wrap {
+  position: relative;
+}
+
+.cw-zine-book-wrap::before,
+.cw-zine-book-wrap::after {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+  border-radius: 3px;
+  border: 1px solid rgba(72, 26, 52, .12);
+}
+
+.cw-zine-book-wrap::before {
+  inset: 2px -4px -3px -4px;
+  z-index: 0;
+  background: #f5ebe4;
+  box-shadow: 0 22px 44px -14px rgba(48, 12, 30, .28);
+}
+
+.cw-zine-book-wrap::after {
+  inset: 4px -7px -6px -7px;
+  z-index: 0;
+  background: #ece0d8;
+  opacity: .75;
+}
+
+/* Open Editorial Spread Surface */
+.cw-zine-book {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: clamp(475px, 72svh, 595px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  perspective: 2200px;
+  border-radius: 3px;
+  background: #fcf6ee;
+  border: 1px solid rgba(72, 26, 52, .16);
+  box-shadow:
+    0 16px 36px -12px rgba(48, 12, 30, .24),
+    0 4px 12px rgba(48, 12, 30, .08);
+}
+
+/* Organic center spine fold with gentle dip and stitch seam */
+.cw-zine-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 34px;
+  transform: translateX(-50%);
+  z-index: 15;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(72, 26, 52, .035) 26%,
+    rgba(72, 26, 52, .09) 42%,
+    rgba(50, 14, 30, .16) 50%,
+    rgba(72, 26, 52, .09) 58%,
+    rgba(72, 26, 52, .035) 74%,
+    transparent 100%
+  );
+}
+
+.cw-zine-spine::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  content: '';
+  background: rgba(255, 250, 244, .38);
+}
+
+/* Individual Spread Half-Page with gentle matte paper curvature & paper fiber */
+.cw-zine-half {
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cw-zine-half::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  opacity: .034;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+.cw-zine-half--left {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .22) 0%, transparent 12%, transparent 88%, rgba(72, 26, 52, .035) 100%),
+    linear-gradient(90deg, #efe2dc 0%, #faf3eb 5%, #fffaf4 46%, #fbf4ec 86%, #eee1dc 97%, #e4d4cf 100%);
+  border-right: 1px solid rgba(72, 26, 52, .06);
+  box-shadow: inset 3px 0 0 #efe3dc;
+}
+
+.cw-zine-half--right {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .22) 0%, transparent 12%, transparent 88%, rgba(72, 26, 52, .035) 100%),
+    linear-gradient(90deg, #e4d4cf 0%, #eee1dc 3%, #fbf4ec 14%, #fffaf4 54%, #faf3eb 95%, #efe2dc 100%);
+  box-shadow: inset -3px 0 0 #efe3dc;
+}
+
+/* Base layer pages inside left & right halves — STRICTLY zero scrollbars inside pages */
+.cw-zine-page-surface {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 2svh, 1.45rem) clamp(1.25rem, 2.3vw, 2.1rem);
+  color: var(--wine-body);
+}
+
+.cw-zine-page-surface--left {
+  overflow: visible;
+}
+
+.cw-zine-page-surface--closing-right {
+  background:
+    radial-gradient(ellipse at 78% 18%, rgba(240, 0, 216, .12) 0%, transparent 52%),
+    #481a34;
+  color: var(--cream);
+}
+
+/* Running Magazine Header/Folio inside each page */
+.cw-zine-folio {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding-bottom: .42rem;
+  border-bottom: 1px solid rgba(72, 26, 52, .12);
+  font-size: .56rem;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--wine-muted);
+  flex-shrink: 0;
+}
+
+.cw-zine-page-surface--closing-right .cw-zine-folio {
+  border-bottom-color: rgba(255, 246, 234, .2);
+  color: rgba(255, 246, 234, .7);
+}
+
+/* ── Left Frameless Editorial Collage Stage ────────────────────────────────── */
+.cw-zine-visual-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .3rem clamp(1rem, 2vw, 1.7rem) .2rem 0;
+}
+
+.cw-zine-collage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Single minimal piece of translucent washi tape only where editorial pin helps */
+.cw-zine-collage__tape {
+  position: absolute;
+  top: -.62rem;
+  left: 50%;
+  width: 3.6rem;
+  transform: translateX(-50%) rotate(-3.5deg);
+  pointer-events: none;
+  z-index: 5;
+  opacity: .88;
+  filter: drop-shadow(0 2px 4px rgba(72, 26, 52, .12));
+}
+
+.cw-zine-collage__img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  border: 0;
+  background: transparent;
+}
+
+/* 01: Enlarged frameless colorful creative collage printed directly onto cream page */
+.cw-zine-collage--01 {
+  height: 100%;
+  transform: translate(-5%, 1%);
+}
+
+.cw-zine-collage--01 .cw-zine-collage__img {
+  height: min(100%, clamp(305px, 54svh, 455px));
+  width: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* 02: Enlarged frameless B&W + blue social collage directly on page */
+.cw-zine-collage--02 {
+  width: clamp(15.5rem, 42svh, 23rem);
+  transform: translateX(-5%) rotate(-1.2deg);
+}
+
+.cw-zine-collage--02 .cw-zine-collage__img {
+  width: 100%;
+  aspect-ratio: 736 / 931;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(48, 12, 30, .14));
+}
+
+/* 03: Enlarged frameless full vertical 2:3 red-glove studio portrait (zero crop) */
+.cw-zine-collage--03 {
+  height: 95%;
+  transform: translateX(-3%) rotate(.8deg);
+}
+
+.cw-zine-collage--03 .cw-zine-collage__img {
+  height: min(100%, clamp(300px, 53svh, 445px));
+  width: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center top;
+  box-shadow: 0 14px 28px -10px rgba(48, 12, 30, .24);
+}
+
+/* 04: Enlarged genuinely alpha-transparent retro CRT + Photoshop UI + hands floating cleanly */
+.cw-zine-collage--04 {
+  width: clamp(15rem, 40svh, 22.5rem);
+  transform: translate(-3%, 3%);
+}
+
+.cw-zine-collage--04 .cw-zine-collage__img {
+  width: 100%;
+  aspect-ratio: 735 / 985;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 24px rgba(48, 12, 30, .18));
+}
+
+/* Quiet unboxed folio caption along bottom edge of left page */
+.cw-zine-left-caption {
+  position: relative;
+  z-index: 6;
+  margin-top: auto;
+  padding-top: .32rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  font-size: .53rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--wine-muted);
+  flex-shrink: 0;
+}
+
+/* ── Right Editorial Feature Page ──────────────────────────────────────────── */
+.cw-zine-editorial {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: .65rem;
+  gap: .65rem;
+}
+
+.cw-zine-editorial__content {
+  margin: auto 0;
+  min-width: 0;
+  padding: .2rem 0;
+}
+
+.cw-zine-editorial__kicker {
+  display: block;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--hot-pink);
+}
+
+.cw-zine-editorial__title {
+  margin: .3rem 0 .24rem;
+  font-family: 'Unbounded', 'Syne', sans-serif;
+  font-size: clamp(.94rem, 1.24vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--burgundy);
+  overflow-wrap: break-word;
+}
+
+.cw-zine-editorial__tagline {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(.92rem, 1.12vw, 1.1rem);
+  line-height: 1.32;
+  color: var(--wine-muted);
+}
+
+.cw-zine-editorial__block {
+  margin-top: .85rem;
+  padding-top: .78rem;
+  border-top: 1px solid rgba(72, 26, 52, .13);
+}
+
+.cw-zine-editorial__block--keywords {
+  margin-top: .78rem;
+  padding-top: .68rem;
+  border-top: 1px dashed rgba(72, 26, 52, .2);
+}
+
+.cw-zine-editorial__desc {
+  margin: 0;
+  font-size: clamp(.81rem, .91vw, .92rem);
+  line-height: 1.58;
+  color: var(--wine-body);
+}
+
+.cw-zine-editorial__keywords {
+  margin: 0;
+  font-size: clamp(.62rem, .71vw, .7rem);
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.58;
+  text-transform: uppercase;
+  color: var(--wine-muted);
+}
+
+.cw-zine-editorial__footer {
+  padding-top: .42rem;
+  border-top: 1px dashed rgba(72, 26, 52, .2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+
+.cw-zine-editorial__note {
+  font-size: .56rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--wine-muted);
+}
+
+/* ── Closing Spread (Spread 05 / Back Cover Feature) ───────────────────────── */
+.cw-zine-editorial--index {
+  padding-top: .42rem;
+  gap: .4rem;
+}
+
+.cw-zine-editorial--index .cw-zine-editorial__title {
+  font-size: clamp(.84rem, 1.05vw, 1.02rem);
+  line-height: 1.24;
+  margin-bottom: .15rem;
+}
+
+.cw-zine-index-list {
+  margin: .5rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .28rem;
+}
+
+.cw-zine-index-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .1rem;
+  padding: .36rem .2rem;
+  border: 0;
+  border-bottom: 1px dashed rgba(72, 26, 52, .18);
+  background: transparent;
+  color: var(--burgundy);
+  text-align: left;
+  cursor: pointer;
+  transition: color 180ms ease, padding-left 180ms ease;
+}
+
+.cw-zine-index-btn:hover,
+.cw-zine-index-btn:focus-visible {
+  color: var(--hot-pink);
+  padding-left: .45rem;
+  outline: none;
+}
+
+.cw-zine-index-btn__title {
+  font-family: 'Unbounded', 'Syne', sans-serif;
+  font-size: clamp(.68rem, .8vw, .76rem);
+  font-weight: 700;
+  line-height: 1.24;
+}
+
+.cw-zine-index-btn__tag {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(.76rem, .86vw, .84rem);
+  color: var(--wine-muted);
+}
+
+.cw-zine-colophon-note {
+  margin-top: auto;
+  padding-top: .45rem;
+  font-size: .54rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--wine-muted);
+}
+
+.cw-zine-closing-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.cw-zine-closing-right__eyebrow {
+  font-size: .61rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--blush);
+}
+
+.cw-zine-closing-right__title {
+  margin: .5rem 0 0;
+  font-family: 'Unbounded', 'Syne', sans-serif;
+  font-size: clamp(1.45rem, 2.3vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -.02em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
+.cw-zine-closing-right__title span {
+  display: block;
+  margin-top: .14em;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.06em;
+  color: var(--blush);
+  text-transform: none;
+}
+
+.cw-zine-closing-right__sub {
+  margin: .8rem 0 1.35rem;
+  font-size: .92rem;
+  line-height: 1.56;
+  color: rgba(255, 246, 234, .82);
+  max-width: 34ch;
+}
+
+.cw-zine-closing-right__btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 44px;
+  padding: .75rem 1.7rem;
+  border: 1.5px solid var(--cream);
+  background: var(--cream);
+  color: var(--burgundy);
+  font-family: 'Space Mono', monospace;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.cw-zine-closing-right__btn:hover,
+.cw-zine-closing-right__btn:focus-visible {
+  background: var(--hot-pink);
+  border-color: var(--hot-pink);
+  color: #ffffff;
+  transform: translate3d(0, -2px, 0);
+  outline: none;
+}
+
+/* ── Edge Click Hitboxes on Magazine Edges ─────────────────────────────────── */
+.cw-zine-edge-trigger {
+  position: absolute;
+  top: 2.8rem;
+  bottom: 1.2rem;
+  width: 2.4rem;
+  z-index: 18;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(72, 26, 52, .36);
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.cw-zine-edge-trigger--prev {
+  left: 0;
+}
+
+.cw-zine-edge-trigger--next {
+  right: 0;
+}
+
+.cw-zine-edge-trigger:hover,
+.cw-zine-edge-trigger:focus-visible {
+  color: var(--hot-pink);
+  outline: none;
+}
+
+.cw-zine-edge-trigger--prev:hover {
+  background: linear-gradient(90deg, rgba(240, 0, 216, .06) 0%, transparent 100%);
+}
+
+.cw-zine-edge-trigger--next:hover {
+  background: linear-gradient(270deg, rgba(240, 0, 216, .06) 0%, transparent 100%);
+}
+
+/* Subtle editorial page corner cue */
+.cw-zine-corner-cue {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 26px;
+  height: 26px;
+  z-index: 17;
+  pointer-events: none;
+  background: linear-gradient(315deg, rgba(72, 26, 52, .12) 46%, rgba(255, 250, 242, .94) 50%, #fffaf2 100%);
+  box-shadow: -2px -2px 5px rgba(72, 26, 52, .08);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  transition: width 180ms ease, height 180ms ease;
+}
+
+.cw-zine-book:has(.cw-zine-edge-trigger--next:hover) .cw-zine-corner-cue {
+  width: 34px;
+  height: 34px;
+}
+
+/* ── Light, Airy Paper Leaf Turn Animation (Desktop Two-Page Spine Flip) ──── */
+.cw-zine-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  z-index: 25;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cw-zine-leaf--forward {
+  animation: cw-page-turn-forward 460ms cubic-bezier(.45, .05, .35, 1) forwards;
+}
+
+.cw-zine-leaf--backward {
+  animation: cw-page-turn-backward 460ms cubic-bezier(.45, .05, .35, 1) forwards;
+}
+
+.cw-zine-leaf__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cw-zine-leaf__face--front {
+  transform: rotateY(0deg);
+  background: linear-gradient(90deg, #e4d4cf 0%, #fbf4ec 14%, #fffaf4 54%, #efe2dc 100%);
+  border-left: 1px solid rgba(72, 26, 52, .1);
+}
+
+.cw-zine-leaf__face--back {
+  transform: rotateY(180deg);
+  background: linear-gradient(90deg, #efe2dc 0%, #fffaf4 46%, #fbf4ec 86%, #e4d4cf 100%);
+  border-right: 1px solid rgba(72, 26, 52, .1);
+}
+
+.cw-zine-leaf__face::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+}
+
+.cw-zine-leaf--forward .cw-zine-leaf__face--front::after {
+  animation: cw-sheen-front-forward 460ms ease both;
+}
+
+.cw-zine-leaf--forward .cw-zine-leaf__face--back::after {
+  animation: cw-sheen-back-forward 460ms ease both;
+}
+
+.cw-zine-leaf--backward .cw-zine-leaf__face--front::after {
+  animation: cw-sheen-front-backward 460ms ease both;
+}
+
+.cw-zine-leaf--backward .cw-zine-leaf__face--back::after {
+  animation: cw-sheen-back-backward 460ms ease both;
+}
+
+.cw-zine-cast-shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.cw-zine-cast-shadow--forward {
+  animation: cw-cast-shadow-forward 460ms ease both;
+}
+
+.cw-zine-cast-shadow--backward {
+  animation: cw-cast-shadow-backward 460ms ease both;
+}
+
+@keyframes cw-page-turn-forward {
+  0% {
+    transform: rotateY(0deg);
+    box-shadow: -2px 0 10px rgba(48, 12, 30, .06);
+  }
+  45% {
+    transform: rotateY(-88deg) skewY(-0.5deg);
+    box-shadow: -10px 0 22px rgba(48, 12, 30, .14);
+  }
+  100% {
+    transform: rotateY(-180deg);
+    box-shadow: 2px 0 10px rgba(48, 12, 30, .05);
+  }
+}
+
+@keyframes cw-page-turn-backward {
+  0% {
+    transform: rotateY(-180deg);
+    box-shadow: 2px 0 10px rgba(48, 12, 30, .06);
+  }
+  55% {
+    transform: rotateY(-92deg) skewY(0.5deg);
+    box-shadow: 10px 0 22px rgba(48, 12, 30, .14);
+  }
+  100% {
+    transform: rotateY(0deg);
+    box-shadow: -2px 0 10px rgba(48, 12, 30, .05);
+  }
+}
+
+@keyframes cw-sheen-front-forward {
+  0% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, 0) 0%, transparent 100%);
+  }
+  45% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .08) 0%, rgba(255, 255, 255, .18) 58%, rgba(72, 26, 52, .05) 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .12) 0%, rgba(72, 26, 52, .04) 100%);
+  }
+}
+
+@keyframes cw-sheen-back-forward {
+  0% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .12) 0%, rgba(72, 26, 52, .04) 100%);
+  }
+  55% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, .16) 40%, rgba(72, 26, 52, .08) 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent 0%, rgba(72, 26, 52, 0) 100%);
+  }
+}
+
+@keyframes cw-sheen-front-backward {
+  0% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .12) 0%, rgba(72, 26, 52, .04) 100%);
+  }
+  55% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .08) 0%, rgba(255, 255, 255, .18) 58%, rgba(72, 26, 52, .05) 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent 0%, transparent 100%);
+  }
+}
+
+@keyframes cw-sheen-back-backward {
+  0% {
+    background: linear-gradient(90deg, transparent 0%, transparent 100%);
+  }
+  45% {
+    background: linear-gradient(90deg, rgba(255, 255, 255, .16) 40%, rgba(72, 26, 52, .08) 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, rgba(72, 26, 52, .12) 0%, rgba(72, 26, 52, .04) 100%);
+  }
+}
+
+@keyframes cw-cast-shadow-forward {
+  0% {
+    background: linear-gradient(90deg, transparent 50%, rgba(44, 10, 26, .09) 51%, transparent 66%);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent 34%, rgba(44, 10, 26, .11) 50%, transparent 62%);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes cw-cast-shadow-backward {
+  0% {
+    background: linear-gradient(90deg, transparent 34%, rgba(44, 10, 26, .09) 49%, transparent 50%);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent 38%, rgba(44, 10, 26, .11) 50%, transparent 66%);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+/* ── Bottom Magazine Navigation Bar ────────────────────────────────────────── */
+.cw-zine-controls {
+  position: relative;
+  z-index: 8;
+  margin-top: .45rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .45rem 1.25rem;
+}
+
+.cw-zine-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 34px;
+  padding: .3rem .88rem;
+  border: 1px solid rgba(72, 26, 52, .34);
+  background: rgba(255, 246, 234, .92);
+  color: var(--burgundy);
+  font-family: 'Space Mono', monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(54, 15, 31, .1);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.cw-zine-nav-btn:hover:not(:disabled),
+.cw-zine-nav-btn:focus-visible:not(:disabled) {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--cream);
+  outline: none;
+}
+
+.cw-zine-nav-btn:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.cw-zine-chapters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+}
+
+.cw-zine-chapter-btn {
+  min-width: 34px;
+  min-height: 32px;
+  padding: .2rem .55rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(72, 26, 52, .8);
+  font-family: 'Space Mono', monospace;
+  font-size: .61rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.cw-zine-chapter-btn:hover,
+.cw-zine-chapter-btn:focus-visible {
+  color: #fff6ea;
+  outline: none;
+}
+
+.cw-zine-chapter-btn--active {
+  color: var(--burgundy);
+  font-weight: 700;
+  border-bottom: 2px solid var(--burgundy);
+}
+
+.cw-zine-hint {
+  width: 100%;
+  text-align: center;
+  margin-top: .2rem;
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(72, 26, 52, .78);
+}
+
+/* ── Compact Tablet Breakpoint (861px–1039px) ──────────────────────────────── */
+@media (max-width: 1039px) and (min-width: 861px) {
+  .cw-services__bg-word {
+    left: 50%;
+  }
+  .cw-services__workspace {
+    grid-template-columns: 1fr;
+    gap: .95rem;
+  }
+  .cw-services__intro-col {
+    max-width: 68ch;
+  }
+  .cw-services__headline,
+  .cw-services__intro {
+    max-width: none;
+  }
+  .cw-zine-topbar,
+  .cw-zine-book-wrap,
+  .cw-zine-controls {
+    width: min(880px, 100%);
+  }
+  .cw-zine-book {
+    height: clamp(440px, 64svh, 540px);
+  }
+}
+
+/* ── Mobile Single-Page Reading Mode (<= 860px) ────────────────────────────── */
+@media (max-width: 860px) {
+  .cw-services {
+    padding: 4.3rem .85rem 1.2rem;
+  }
+  .cw-services__bg-word {
+    left: 50%;
+    font-size: clamp(5rem, 22vw, 8.8rem);
+  }
+  .cw-services__bg-word--top {
+    top: 6rem;
+  }
+  .cw-services__bg-word--bottom {
+    bottom: -.6rem;
+  }
+  .cw-services__workspace {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+  }
+  .cw-services__headline {
+    font-size: 1.1rem;
+    max-width: none;
+  }
+  .cw-services__intro {
+    margin-top: .55rem;
+    padding-top: .55rem;
+    font-size: .78rem;
+    line-height: 1.48;
+    max-width: none;
+  }
+  .cw-zine-topbar,
+  .cw-zine-book-wrap,
+  .cw-zine-controls {
+    width: 100%;
+  }
+  .cw-zine-book-wrap::before,
+  .cw-zine-book-wrap::after {
+    inset: 2px -2px -2px -2px;
+  }
+  .cw-zine-book {
+    height: auto;
+    min-height: 495px;
+    grid-template-columns: 1fr;
+    background: linear-gradient(180deg, #faf2ea 0%, #fcf7f0 52%, #faf2ea 100%);
+  }
+  .cw-zine-spine {
+    display: none;
+  }
+  .cw-zine-half--left,
+  .cw-zine-half--right,
+  .cw-zine-half--single {
+    border-right: 0;
+    box-shadow: none;
+    background: transparent;
+    min-height: 495px;
+  }
+  .cw-zine-page-surface {
+    padding: 1rem 1.05rem 1.15rem;
+  }
+  .cw-zine-visual-stage {
+    padding: .5rem 0;
+  }
+  .cw-zine-collage--01 {
+    transform: none;
+  }
+  .cw-zine-collage--01 .cw-zine-collage__img {
+    height: 375px;
+  }
+  .cw-zine-collage--02 {
+    width: min(86%, 20rem);
+    transform: rotate(-1deg);
+  }
+  .cw-zine-collage--03 {
+    transform: rotate(.6deg);
+  }
+  .cw-zine-collage--03 .cw-zine-collage__img {
+    height: 365px;
+  }
+  .cw-zine-collage--04 {
+    width: min(88%, 21rem);
+    transform: none;
+  }
+  .cw-zine-edge-trigger {
+    width: 2.2rem;
+  }
+  .cw-zine-leaf--single {
+    left: 0;
+    width: 100%;
+    transform-origin: left center;
+  }
+  .cw-zine-leaf--single.cw-zine-leaf--forward {
+    animation: cw-single-turn-forward 420ms cubic-bezier(.45, .05, .35, 1) forwards;
+  }
+  .cw-zine-leaf--single.cw-zine-leaf--backward {
+    animation: cw-single-turn-backward 420ms cubic-bezier(.45, .05, .35, 1) forwards;
+  }
+  .cw-zine-controls {
+    gap: .5rem;
+  }
+  .cw-zine-nav-btn {
+    padding: .36rem .76rem;
+    font-size: .6rem;
+  }
+}
+
+@keyframes cw-single-turn-forward {
+  0% {
+    opacity: 1;
+    transform: rotateY(0deg);
+    box-shadow: 0 8px 18px rgba(48, 12, 30, .1);
+  }
+  65% {
+    opacity: .92;
+    transform: rotateY(-78deg);
+    box-shadow: 12px 0 24px rgba(48, 12, 30, .18);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateY(-108deg);
+  }
+}
+
+@keyframes cw-single-turn-backward {
+  0% {
+    opacity: 0;
+    transform: rotateY(-108deg);
+  }
+  45% {
+    opacity: .94;
+    transform: rotateY(-62deg);
+    box-shadow: 12px 0 24px rgba(48, 12, 30, .16);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+    box-shadow: 0 8px 18px rgba(48, 12, 30, .08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-zine-leaf--forward,
+  .cw-zine-leaf--backward,
+  .cw-zine-cast-shadow--forward,
+  .cw-zine-cast-shadow--backward {
+    animation-duration: .01ms;
+  }
+}

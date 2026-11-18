@@ -310,10 +310,10 @@
   .cw-world__mobile .cw-name-paper__cecilia { font-size: clamp(2.45rem, 9.4vw, 3.7rem); }
   .cw-world__mobile .cw-name-paper__du { top: 38%; left: 96%; font-size: clamp(2.2rem, 8.2vw, 3.25rem); }
 
-  .cw-portraits--mobile { position: relative; top: auto; left: 12px; width: 100%; height: clamp(27.5rem, 108vw, 37rem); }
-  .cw-portraits--mobile .cw-person-slot--orange { z-index: 4; left: 1.5%; top: 1%; height: min(115vw, 31.3rem); filter: url(#cutout-sticker-orange); }
-  .cw-portraits--mobile .cw-person-slot--red { z-index: 2; left: 32%; top: -17.5%; height: min(86.5vw, 24.8rem); }
-  .cw-portraits--mobile .cw-person-slot--trench { z-index: 3; left: 43%; top: 32%; height: min(73.5vw, 20.3rem); }
+  .cw-portraits--mobile { position: relative; top: -57px; left: auto; width: 100%; max-width: 28.5rem; margin: 0 auto; height: clamp(23.5rem, 104vw, 31rem); }
+  .cw-portraits--mobile .cw-person-slot--orange { z-index: 4; left: -5%; top: 12%; height: 90%; filter: url(#cutout-sticker-orange); }
+  .cw-portraits--mobile .cw-person-slot--red { z-index: 2; left: 32%; top: -23%; height: 82%; }
+  .cw-portraits--mobile .cw-person-slot--trench { z-index: 3; left: 43%; top: 31%; height: 73%; }
 
   .cw-bag-collage--mobile { position: relative; top: auto; right: auto; width: min(86%, 29.5rem); margin: 5.5rem auto .5rem; }
   .cw-bag-collage--mobile .cw-bag-collage__title { top: -37%; left: 1%; }
@@ -344,7 +344,6 @@
   .cw-world__mobile { padding-right: .72rem; padding-left: .72rem; }
   .cw-world__mobile .cw-name-paper__cecilia { font-size: 9.2vw; }
   .cw-world__mobile .cw-name-paper__du { font-size: 8.2vw; }
-  .cw-portraits--mobile { height: 26rem; }
 }
 
 /* ── Smooth fade-out & reverse restoration of default homepage collage ─────────── */

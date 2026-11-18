@@ -28,9 +28,9 @@ function AboutStickerFilter() {
           />
           <feComposite in="textured-cream" in2="torn-inner" operator="in" result="deckle-inner" />
 
-          <feGaussianBlur in="torn-outer" stdDeviation="6.5" result="blurred-shadow" />
-          <feOffset in="blurred-shadow" dx="1.5" dy="8" result="offset-shadow" />
-          <feFlood floodColor="#210817" floodOpacity=".38" result="shadow-color" />
+          <feGaussianBlur in="torn-outer" stdDeviation="5" result="blurred-shadow" />
+          <feOffset in="blurred-shadow" dx="1" dy="5" result="offset-shadow" />
+          <feFlood floodColor="#481A34" floodOpacity=".18" result="shadow-color" />
           <feComposite in="shadow-color" in2="offset-shadow" operator="in" result="shadow" />
           <feMerge>
             <feMergeNode in="shadow" />
@@ -99,7 +99,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="cw-about__col-heading-wrap">
               <h2
                 id="about-strategist-heading"
-                className="cw-about__col-heading cw-about__col-heading--cream font-editorial"
+                className="cw-about__col-heading cw-about__col-heading--cream"
               >
                 THE STRATEGIST
               </h2>
@@ -138,7 +138,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             <div className="cw-about__col-heading-wrap">
               <h2
                 id="about-creative-heading"
-                className="cw-about__col-heading cw-about__col-heading--pink font-editorial"
+                className="cw-about__col-heading cw-about__col-heading--pink"
               >
                 THE CREATIVE
               </h2>

@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { MenuModal } from './components/MenuModal';
 import { AboutPage } from './components/AboutPage';
+import { ServicesPage } from './components/ServicesPage';
+import { WorkPage } from './components/WorkPage';
 import { SectionPage } from './components/SectionPage';
 import { findMenuItemByPath } from './data/menuItems';
 
@@ -81,7 +83,12 @@ export default function App() {
       {/* Editorial Header */}
       <Header
         onOpenMenu={() => navigateTo('/menu')}
-        isLightBackdrop={!activeSection && route.bagOpen}
+        isLightBackdrop={
+          (!activeSection && route.bagOpen) ||
+          activeSection?.path === '/about' ||
+          activeSection?.path === '/services' ||
+          activeSection?.path === '/work'
+        }
       />
 
       {/* Active Route View */}
@@ -89,6 +96,10 @@ export default function App() {
         {activeSection ? (
           activeSection.path === '/about' ? (
             <AboutPage onNavigate={navigateTo} />
+          ) : activeSection.path === '/services' ? (
+            <ServicesPage onNavigate={navigateTo} />
+          ) : activeSection.path === '/work' ? (
+            <WorkPage />
           ) : (
             <SectionPage
               section={activeSection}

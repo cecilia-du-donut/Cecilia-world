@@ -1,9 +1,11 @@
 /* Editorial × Scrapbook styling scoped strictly to the /about page */
 .cw-about {
-  --cream: #fff0d9;
-  --blush: #f1b1c3;
-  --dusty: #c67791;
+  --cream: #fff7ed;
+  --blush: #f4d8dc;
+  --dusty: #c994a1;
   --burgundy: #481a34;
+  --wine-body: #542231;
+  --wine-muted: #7b4859;
   position: relative;
   min-height: 100svh;
   display: flex;
@@ -11,37 +13,38 @@
   justify-content: space-between;
   overflow-x: hidden;
   isolation: isolate;
-  color: var(--cream);
+  color: var(--wine-body);
   background:
-    url('/assets/textures/watercolor-wash.svg') center / cover no-repeat,
-    #6b213e;
+    url('/assets/aistudio/image_5cf11783.png') center / cover no-repeat,
+    #f3dede;
   padding: clamp(5.2rem, 8.5vh, 6.6rem) clamp(1.25rem, 4vw, 3.6rem) clamp(1.3rem, 2.8vh, 2.1rem);
 }
 
-/* Cold-press vintage paper fibers & soft-light scrapbook tooth matching homepage */
+/* Soft irregular cream-blush & dusty-rose watercolor bloom + cold-press tooth */
 .cw-about::before {
   position: absolute;
   inset: 0;
   z-index: 0;
   content: '';
   pointer-events: none;
-  opacity: .84;
-  mix-blend-mode: soft-light;
+  opacity: .34;
+  mix-blend-mode: multiply;
   background-image:
     url('/assets/textures/paper-fibers.svg'),
-    linear-gradient(16deg, transparent 0 38%, rgba(255, 236, 216, .12) 38.4%, rgba(22, 4, 14, .2) 38.9%, transparent 39.6%),
-    linear-gradient(-12deg, transparent 0 68%, rgba(255, 236, 216, .1) 68.3%, rgba(22, 4, 14, .18) 68.8%, transparent 69.5%);
-  background-size: 380px 380px, 100% 100%, 100% 100%;
+    radial-gradient(ellipse at 22% 24%, rgba(246, 226, 214, .42) 0%, transparent 56%),
+    radial-gradient(ellipse at 78% 72%, rgba(212, 162, 174, .28) 0%, transparent 58%);
+  background-size: 360px 360px, 100% 100%, 100% 100%;
 }
 
-/* Soft radial vignette keeping focus on center portrait and balanced flanking columns */
+/* Luminous warm cream-blush center softening gracefully toward dusty-rose perimeter */
 .cw-about::after {
   position: absolute;
   inset: 0;
   z-index: 0;
   content: '';
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 48%, rgba(241, 177, 195, .08) 0%, transparent 56%, rgba(28, 6, 18, .34) 100%);
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(255, 249, 244, .46) 0%, rgba(247, 229, 227, .14) 52%, rgba(168, 114, 129, .26) 100%);
 }
 
 .cw-about__defs {
@@ -80,9 +83,9 @@
   padding: .35rem .15rem;
   border: 0;
   background: transparent;
-  color: rgba(255, 240, 217, .82);
-  font-size: .72rem;
-  letter-spacing: .16em;
+  color: rgba(72, 26, 52, .88);
+  font-size: .7rem;
+  letter-spacing: .17em;
   text-transform: uppercase;
   cursor: pointer;
   transition: color 200ms ease, transform 200ms cubic-bezier(.16, 1, .3, 1);
@@ -90,7 +93,7 @@
 
 .cw-about__back-link:hover,
 .cw-about__back-link:focus-visible {
-  color: #ff4fd6;
+  color: #cf009e;
   outline: none;
 }
 
@@ -100,14 +103,14 @@
 }
 
 .cw-about__back-link--muted {
-  color: rgba(255, 240, 217, .58);
+  color: rgba(72, 26, 52, .62);
 }
 
 .cw-about__kicker {
-  font-size: .72rem;
-  letter-spacing: .18em;
+  font-size: .69rem;
+  letter-spacing: .19em;
   text-transform: uppercase;
-  color: rgba(241, 177, 195, .86);
+  color: var(--wine-muted);
 }
 
 /* Main centered editorial shell */
@@ -125,7 +128,7 @@
   justify-content: space-between;
 }
 
-/* ── 1. Top Centered Title Lockup: HELLO, I'M CECILIA ──────────────────────── */
+/* ── 1. Top Centered Title Lockup: HELLO, I'M CECILIA (refined cover serif) ── */
 .cw-about__header {
   position: relative;
   z-index: 5;
@@ -144,20 +147,19 @@
 .cw-about__title-line {
   position: relative;
   display: inline-block;
-  padding: .24em .58em .28em;
+  padding: .24em .62em .28em;
   color: var(--burgundy);
-  font-weight: 600;
+  font-weight: 500;
   line-height: .94;
   white-space: nowrap;
-  text-shadow: 0 1px 0 rgba(255, 245, 232, .35);
 }
 
 .cw-about__title-line--a {
   z-index: 2;
-  font-size: clamp(1.45rem, 2.75vw, 2.5rem);
-  letter-spacing: .04em;
-  transform: rotate(-2.2deg);
-  filter: drop-shadow(0 9px 12px rgba(26, 5, 18, .36));
+  font-size: clamp(1.36rem, 2.4vw, 2.2rem);
+  letter-spacing: .07em;
+  transform: rotate(-2.1deg);
+  filter: drop-shadow(0 4px 8px rgba(72, 26, 52, .14));
 }
 
 .cw-about__title-line--a::before {
@@ -170,13 +172,14 @@
 
 .cw-about__title-line--b {
   z-index: 3;
-  margin-top: -.14em;
-  margin-left: .9em;
-  font-size: clamp(2.15rem, 4.35vw, 4.05rem);
+  margin-top: -.13em;
+  margin-left: .85em;
+  font-size: clamp(2.05rem, 3.95vw, 3.65rem);
   font-style: italic;
-  letter-spacing: -.03em;
-  transform: rotate(1.9deg);
-  filter: drop-shadow(0 11px 15px rgba(26, 5, 18, .42));
+  font-weight: 500;
+  letter-spacing: -.015em;
+  transform: rotate(1.7deg);
+  filter: drop-shadow(0 5px 10px rgba(72, 26, 52, .16));
 }
 
 .cw-about__title-line--b::before {
@@ -187,27 +190,28 @@
   background: url('/assets/stickers/parchment-pink.png') center / 100% 100% no-repeat;
 }
 
-/* Delicate scrapbook sparkle & hand-drawn ink flourish framing the title */
+/* Delicate scrapbook sparkle & subtle hand-drawn ink flourish framing the title */
 .cw-about__title-star {
   position: absolute;
   top: -16%;
   right: -13%;
-  width: clamp(2rem, 3.3vw, 3rem);
+  width: clamp(1.9rem, 3.1vw, 2.8rem);
   height: auto;
   pointer-events: none;
   transform: rotate(12deg);
-  filter: drop-shadow(0 4px 8px rgba(20, 4, 14, .35));
+  filter: drop-shadow(0 2px 5px rgba(72, 26, 52, .16));
 }
 
 .cw-about__title-lines {
   position: absolute;
   bottom: -14%;
   left: -17%;
-  width: clamp(3.6rem, 6vw, 5.4rem);
+  width: clamp(3.4rem, 5.6vw, 5rem);
   height: auto;
   pointer-events: none;
-  opacity: .82;
+  opacity: .56;
   transform: rotate(-10deg);
+  filter: brightness(.45) sepia(.55) hue-rotate(-32deg) saturate(1.45);
 }
 
 /* ── 2. Three-Column Composition: Left Copy · Center Portrait · Right Copy ── */
@@ -242,23 +246,26 @@
   margin-bottom: 1.05rem;
 }
 
+/* Y2K retro-futuristic bold display sans for section subheadings */
 .cw-about__col-heading {
   position: relative;
   z-index: 1;
   margin: 0;
   display: inline-block;
-  padding: .34em .74em .38em;
+  padding: .36em .8em .38em;
   color: var(--burgundy);
-  font-size: clamp(.95rem, 1.35vw, 1.18rem);
+  font-family: 'Unbounded', 'Syne', sans-serif;
+  font-size: clamp(.82rem, 1.08vw, .98rem);
   font-weight: 800;
-  letter-spacing: .07em;
+  letter-spacing: .06em;
+  line-height: 1.1;
   text-transform: uppercase;
   white-space: nowrap;
-  filter: drop-shadow(0 8px 11px rgba(24, 5, 16, .34));
+  filter: drop-shadow(0 3px 6px rgba(72, 26, 52, .13));
 }
 
 .cw-about__col-heading--cream {
-  transform: rotate(-1.6deg);
+  transform: rotate(-2.3deg);
 }
 
 .cw-about__col-heading--cream::before {
@@ -270,7 +277,7 @@
 }
 
 .cw-about__col-heading--pink {
-  transform: rotate(1.5deg);
+  transform: rotate(2.6deg);
 }
 
 .cw-about__col-heading--pink::before {
@@ -283,30 +290,32 @@
 
 .cw-about__col-tape {
   position: absolute;
-  top: -.65rem;
-  right: -1.1rem;
-  width: 3.1rem;
+  top: -.6rem;
+  right: -1rem;
+  width: 2.9rem;
   height: auto;
   pointer-events: none;
-  opacity: .88;
+  opacity: .84;
   transform: rotate(18deg);
-  filter: drop-shadow(0 3px 5px rgba(20, 4, 14, .3));
+  filter: drop-shadow(0 2px 4px rgba(72, 26, 52, .13));
 }
 
 .cw-about__copy {
   display: flex;
   flex-direction: column;
-  gap: .95rem;
+  gap: 1.05rem;
   padding-left: .2rem;
 }
 
+/* Clean modern sans-serif in warm deep wine-brown with airy editorial leading */
 .cw-about__copy p {
   margin: 0;
-  color: rgba(255, 240, 217, .92);
-  font-size: clamp(.92rem, 1.06vw, 1.03rem);
-  line-height: 1.72;
-  letter-spacing: .006em;
-  text-shadow: 0 1px 2px rgba(24, 5, 16, .35);
+  color: var(--wine-body);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(.92rem, 1.02vw, 1rem);
+  font-weight: 400;
+  line-height: 1.84;
+  letter-spacing: .008em;
 }
 
 /* Center portrait column */
@@ -320,19 +329,19 @@
   padding: 0 clamp(.2rem, 1vw, .9rem);
 }
 
-/* Soft vintage parchment sheet peeking subtly behind portrait for scrapbook depth */
+/* Soft cream-pink parchment sheet framing portrait gently */
 .cw-about__portrait-backdrop {
   position: absolute;
   z-index: 0;
-  bottom: 4%;
+  bottom: 3%;
   left: 50%;
-  width: 92%;
-  height: 76%;
-  transform: translateX(-50%) rotate(-3.5deg);
-  opacity: .24;
+  width: 90%;
+  height: 75%;
+  transform: translateX(-50%) rotate(-3deg);
+  opacity: .42;
   pointer-events: none;
-  background: url('/assets/stickers/parchment-pink.png') center / 100% 100% no-repeat;
-  filter: drop-shadow(0 16px 24px rgba(20, 4, 14, .42));
+  background: url('/assets/stickers/parchment.png') center / 100% 100% no-repeat;
+  filter: drop-shadow(0 6px 14px rgba(72, 26, 52, .11));
 }
 
 .cw-about__portrait-figure {
@@ -370,7 +379,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding-top: 1.05rem;
-  border-top: 1px solid rgba(255, 240, 217, .2);
+  border-top: 1px solid rgba(72, 26, 52, .18);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -382,22 +391,22 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: .85rem;
+  gap: .8rem;
 }
 
 .cw-about__keywords-note {
   font-size: 1.15rem;
-  color: var(--blush);
+  color: var(--wine-muted);
   letter-spacing: .02em;
   transform: rotate(-3deg);
 }
 
 .cw-about__keywords {
   margin: 0;
-  font-size: clamp(.66rem, .78vw, .76rem);
+  font-size: clamp(.65rem, .76vw, .74rem);
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: rgba(255, 240, 217, .88);
+  color: rgba(72, 26, 52, .82);
 }
 
 .cw-about__next-link {
@@ -408,9 +417,9 @@
   padding: .35rem .15rem;
   border: 0;
   background: transparent;
-  color: rgba(255, 240, 217, .8);
-  font-size: .72rem;
-  letter-spacing: .16em;
+  color: rgba(72, 26, 52, .82);
+  font-size: .7rem;
+  letter-spacing: .17em;
   text-transform: uppercase;
   cursor: pointer;
   transition: color 200ms ease;
@@ -418,7 +427,7 @@
 
 .cw-about__next-link:hover,
 .cw-about__next-link:focus-visible {
-  color: #ff4fd6;
+  color: #cf009e;
   outline: none;
 }
 
@@ -449,20 +458,20 @@
     margin-bottom: 1.35rem;
   }
   .cw-about__title-line--a {
-    font-size: clamp(1.3rem, 5.2vw, 1.85rem);
+    font-size: clamp(1.22rem, 4.9vw, 1.75rem);
   }
   .cw-about__title-line--b {
     margin-left: .45em;
-    font-size: clamp(2rem, 8.6vw, 2.85rem);
+    font-size: clamp(1.9rem, 8.2vw, 2.75rem);
   }
   .cw-about__title-star {
     right: -10%;
     top: -20%;
-    width: 2rem;
+    width: 1.9rem;
   }
   .cw-about__title-lines {
     left: -12%;
-    width: 3.4rem;
+    width: 3.2rem;
   }
   .cw-about__stage {
     grid-template-columns: 1fr;

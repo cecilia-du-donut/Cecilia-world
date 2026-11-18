@@ -1,0 +1,803 @@
+/* Selected Work — Vinyl Turntable Arc Carousel Reference Layout (/work) */
+.cw-work {
+  --butter-yellow: #faf59e;
+  --pink-main: #f261a6;
+  --lavender-star: #b8a8f8;
+  --burgundy: #481a34;
+  --wine-body: #592439;
+  --cream-card: #fffdf4;
+
+  position: relative;
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--burgundy);
+  /* Strictly SOLID butter-yellow background matching reference — zero gradients */
+  background-color: var(--butter-yellow);
+  padding: clamp(3.9rem, 6vh, 4.7rem) clamp(1rem, 3vw, 2.4rem) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scattered Lavender Stars Layer (non-interactive) */
+.cw-work__stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cw-work__star {
+  position: absolute;
+  opacity: 0.9;
+}
+
+.cw-work__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Arched Playful #F261A6 Pink Main Headline & Subtitle ─────────────────── */
+.cw-work__hero {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.cw-work__arched-svg {
+  width: min(100%, 640px);
+  height: auto;
+  overflow: visible;
+}
+
+.cw-work__arched-text {
+  fill: var(--pink-main);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 66px;
+  letter-spacing: 0.5px;
+}
+
+.cw-work__sublock {
+  margin-top: -0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.cw-work__sub-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(0.74rem, 0.95vw, 0.88rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+
+.cw-work__subtitle {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(0.86rem, 1vw, 0.96rem);
+  color: #6b2644;
+}
+
+/* ── Turntable Arc Composition Stage (Giant Rising Vinyl + 5 Colored Borders) ── */
+.cw-turntable-stage {
+  --stage-h: clamp(440px, calc(100svh - 205px), 740px);
+  --vinyl-size: clamp(420px, min(74vw, calc(var(--stage-h) * 1.18)), 900px);
+  --vinyl-cy: calc(var(--vinyl-size) * 0.5 + 46px);
+  --arc-radius: calc(var(--vinyl-size) * 0.405);
+  --cover-size: clamp(142px, calc(var(--vinyl-size) * 0.23 + 18px), 214px);
+
+  position: relative;
+  z-index: 12;
+  flex: 1;
+  width: 100%;
+  min-height: var(--stage-h);
+  margin-top: 0.25rem;
+  overflow: visible;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+
+.cw-turntable-stage:active {
+  cursor: grabbing;
+}
+
+.cw-turntable-hub {
+  position: absolute;
+  inset: 0;
+}
+
+/* Giant Rising Black Vinyl Disc anchored at shared polar center */
+.cw-vinyl-disc {
+  position: absolute;
+  top: var(--vinyl-cy);
+  left: 50%;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 -8px 34px rgba(58, 21, 36, 0.22);
+}
+
+.cw-vinyl-disc__spin {
+  width: 100%;
+  height: 100%;
+  animation: cw-vinyl-rotate 22s linear infinite;
+  will-change: transform;
+}
+
+@keyframes cw-vinyl-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cw-vinyl-disc__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cw-vinyl-disc__reflection {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── 5 Orbiting Colored-Border Square Covers + Left Pink Numbers ─────────── */
+.cw-arc-slot {
+  position: absolute;
+  top: var(--vinyl-cy);
+  left: 50%;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--cw-arc-angle, 0deg))
+    translateY(calc(var(--arc-radius) * -1))
+    rotate(calc(var(--cw-arc-angle, 0deg) * -1))
+    scale(var(--cw-arc-scale, 1));
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 190ms ease-out;
+  will-change: transform, opacity;
+}
+
+.cw-arc-slot:hover,
+.cw-arc-slot:focus-within {
+  z-index: 40 !important;
+}
+
+/* Prevents wrapping edge cover from gliding visibly across the pink center label */
+.cw-arc-slot--wrapping {
+  opacity: 0;
+  transition: none;
+  pointer-events: none;
+}
+
+.cw-arc-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.cw-arc-item:focus-visible .cw-arc-item__frame {
+  outline: 3px solid var(--burgundy);
+  outline-offset: 4px;
+}
+
+/* Bold #F261A6 Two-Digit Number directly to the left of each colored square */
+.cw-arc-item__num {
+  position: absolute;
+  right: calc(100% + 0.55rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(1rem, 1.4vw, 1.32rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--pink-main);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.72);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
+}
+
+/* Pastel Colored Square Frame matching reference aesthetic */
+.cw-arc-item__frame {
+  display: block;
+  width: var(--cover-size);
+  height: var(--cover-size);
+  border-style: solid;
+  border-width: clamp(3.5px, 0.45vw, 5px);
+  background: #141213;
+  box-shadow: 0 12px 26px rgba(8, 3, 6, 0.48);
+  overflow: hidden;
+  transition:
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cw-arc-cover__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cw-arc-item:hover .cw-arc-item__frame,
+.cw-arc-item:focus-visible .cw-arc-item__frame {
+  transform: translate3d(0, -6px, 0) scale(1.3);
+  box-shadow: 0 24px 44px rgba(8, 3, 6, 0.68);
+}
+
+.cw-arc-item:hover .cw-arc-item__num,
+.cw-arc-item:focus-visible .cw-arc-item__num {
+  transform: translate(calc(var(--cover-size) * -0.17 - 6px), -50%) scale(1.08);
+}
+
+.cw-arc-slot--active .cw-arc-item__frame {
+  box-shadow:
+    0 18px 36px rgba(8, 3, 6, 0.64),
+    0 0 0 2px rgba(255, 255, 255, 0.48);
+}
+
+.cw-arc-item__label {
+  margin-top: 0.35rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 244, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.72);
+  opacity: 0;
+  transform: translateY(-2px);
+  transition: opacity 180ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.cw-arc-slot--active .cw-arc-item__label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cw-arc-item:hover .cw-arc-item__label,
+.cw-arc-item:focus-visible .cw-arc-item__label {
+  opacity: 1;
+  transform: translateY(calc(var(--cover-size) * 0.14 + 4px));
+}
+
+/* ── Bottom Turntable Carousel Controls Dock ───────────────────────────────── */
+.cw-carousel-bar {
+  position: absolute;
+  bottom: clamp(0.65rem, 1.8vh, 1.1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  width: min(94%, 640px);
+  padding: 0.4rem 0.65rem;
+  background: rgba(255, 253, 244, 0.94);
+  border: 1px solid rgba(72, 26, 52, 0.22);
+  box-shadow: 0 12px 28px rgba(24, 6, 14, 0.28);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 0.85rem;
+}
+
+.cw-carousel-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cw-carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  min-height: 38px;
+  padding: 0.36rem 0.92rem;
+  border: 1.5px solid var(--burgundy);
+  background: var(--cream-card);
+  color: var(--burgundy);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.cw-carousel-btn--quiet {
+  border-color: rgba(72, 26, 52, 0.32);
+  background: rgba(255, 253, 244, 0.82);
+}
+
+.cw-carousel-btn:hover,
+.cw-carousel-btn:focus-visible {
+  background: var(--pink-main);
+  border-color: var(--pink-main);
+  color: #ffffff;
+  outline: none;
+}
+
+.cw-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.18rem 0.5rem;
+  background: rgba(255, 253, 244, 0.88);
+  border: 1px solid rgba(72, 26, 52, 0.2);
+}
+
+.cw-carousel-dot {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0.2rem 0.45rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: rgba(72, 26, 52, 0.68);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.cw-carousel-dot:hover,
+.cw-carousel-dot:focus-visible {
+  color: var(--pink-main);
+  outline: none;
+}
+
+.cw-carousel-dot--active {
+  color: var(--burgundy);
+  border-bottom-color: var(--pink-main);
+}
+
+/* ── Full-Viewport Overlay Project Detail Skeleton (SOLID IVORY / CREAM) ───── */
+.cw-work-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  color: #481a34;
+  /* Solid warm cream paper background matching site aesthetic (zero gradients) */
+  background-color: #fbf6dc;
+  padding: clamp(1.25rem, 3.2vh, 2.5rem) clamp(1.1rem, 4vw, 3.25rem) clamp(2rem, 4vh, 3rem);
+  animation: cw-overlay-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cw-overlay-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cw-work-overlay__sheet {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cw-detail-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(72, 26, 52, 0.16);
+}
+
+.cw-detail-topbar__crumb {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b42d6d;
+  font-variant-numeric: tabular-nums;
+}
+
+.cw-detail-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 44px;
+  padding: 0.48rem 1.1rem;
+  border: 1.5px solid #481a34;
+  background: #fffdf4;
+  color: #481a34;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.cw-detail-close:hover,
+.cw-detail-close:focus-visible {
+  background: #f261a6;
+  border-color: #f261a6;
+  color: #ffffff;
+  outline: none;
+}
+
+.cw-detail-close:focus-visible {
+  outline: 2px solid #481a34;
+  outline-offset: 3px;
+}
+
+.cw-detail-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(1.8rem, 4vw, 3.6rem);
+  align-items: start;
+  padding: clamp(1.5rem, 3.2vh, 2.4rem) 0 clamp(2rem, 4vh, 3rem);
+}
+
+.cw-detail-media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cw-detail-media__tabs {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.25rem;
+  background: #f1ead0;
+  border: 1px solid rgba(72, 26, 52, 0.16);
+  gap: 0.25rem;
+}
+
+.cw-media-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 38px;
+  padding: 0.38rem 0.9rem;
+  border: 0;
+  background: transparent;
+  color: #6b2644;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.cw-media-tab--active {
+  background: #fffdf4;
+  color: #481a34;
+  box-shadow: 0 2px 6px rgba(72, 26, 52, 0.1);
+}
+
+.cw-media-slot {
+  width: 100%;
+  min-height: clamp(320px, 46vh, 460px);
+  padding: 1.35rem;
+  background: #fffdf4;
+  border: 2px dashed rgba(72, 26, 52, 0.24);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.cw-media-slot__kicker {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b42d6d;
+}
+
+.cw-media-slot__center {
+  margin: auto 0;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(72, 26, 52, 0.1);
+  border-bottom: 1px solid rgba(72, 26, 52, 0.1);
+}
+
+.cw-media-slot__title {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.18rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  color: #481a34;
+}
+
+.cw-media-slot__desc {
+  margin: 0.55rem auto 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #6b384d;
+  max-width: 36ch;
+}
+
+.cw-media-slot__meta {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #844d63;
+}
+
+.cw-gallery-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.cw-gallery-thumb {
+  min-height: 36px;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(72, 26, 52, 0.22);
+  background: #fbf6dc;
+  color: #6b2644;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.cw-gallery-thumb--active {
+  background: #f261a6;
+  border-color: #f261a6;
+  color: #ffffff;
+}
+
+.cw-detail-info__header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(72, 26, 52, 0.18);
+}
+
+.cw-detail-info__index {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b42d6d;
+  font-variant-numeric: tabular-nums;
+}
+
+.cw-detail-info__title {
+  margin: 0.32rem 0 0;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.55rem, 2.7vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #481a34;
+  text-wrap: balance;
+}
+
+.cw-detail-sections {
+  display: flex;
+  flex-direction: column;
+}
+
+.cw-detail-section {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(72, 26, 52, 0.12);
+}
+
+.cw-detail-section:last-child {
+  border-bottom: 0;
+}
+
+.cw-detail-section__heading {
+  margin: 0 0 0.4rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #481a34;
+}
+
+.cw-detail-section__placeholder {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(72, 26, 52, 0.76);
+  max-width: 58ch;
+}
+
+.cw-detail-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(72, 26, 52, 0.16);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cw-detail-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid rgba(72, 26, 52, 0.32);
+  background: #fffdf4;
+  color: #481a34;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.cw-detail-nav-btn:hover,
+.cw-detail-nav-btn:focus-visible {
+  background: #f261a6;
+  border-color: #f261a6;
+  color: #ffffff;
+  outline: none;
+}
+
+.cw-detail-nav-btn__kicker {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.cw-detail-nav-btn__label {
+  display: block;
+  margin-top: 0.1rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.cw-detail-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cw-detail-dot {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #844d63;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cw-detail-dot--active {
+  color: #481a34;
+  border-bottom-color: #f261a6;
+}
+
+/* ── Tablet & Mobile Responsive Turntable Adjustments ──────────────────────── */
+@media (max-width: 960px) {
+  .cw-turntable-stage {
+    --stage-h: clamp(380px, calc(100svh - 195px), 560px);
+    --vinyl-size: clamp(340px, min(82vw, calc(var(--stage-h) * 1.18)), 640px);
+    --vinyl-cy: calc(var(--vinyl-size) * 0.5 + 34px);
+    --arc-radius: calc(var(--vinyl-size) * 0.4);
+    --cover-size: clamp(114px, calc(var(--vinyl-size) * 0.22 + 12px), 168px);
+  }
+  .cw-detail-body {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .cw-work {
+    padding: 4.1rem 0.75rem 0;
+  }
+  .cw-work__arched-text {
+    font-size: 72px;
+  }
+  .cw-turntable-stage {
+    --stage-h: clamp(320px, calc(100svh - 185px), 460px);
+    --vinyl-size: clamp(290px, min(84vw, calc(var(--stage-h) * 1.12)), 420px);
+    --vinyl-cy: calc(var(--vinyl-size) * 0.5 + 28px);
+    --arc-radius: calc(var(--vinyl-size) * 0.355);
+    --cover-size: clamp(78px, calc(var(--vinyl-size) * 0.2 + 6px), 112px);
+  }
+  .cw-arc-item__num {
+    right: calc(100% + 0.26rem);
+    font-size: 0.72rem;
+  }
+  .cw-carousel-bar {
+    justify-content: center;
+    padding: 0.35rem 0.5rem;
+    gap: 0.35rem 0.55rem;
+  }
+  .cw-carousel-btn {
+    padding: 0.32rem 0.65rem;
+    font-size: 0.58rem;
+  }
+  .cw-detail-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cw-detail-nav-btn {
+    justify-content: space-between;
+  }
+  .cw-detail-dots {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-vinyl-disc__spin,
+  .cw-work-overlay {
+    animation: none;
+  }
+  .cw-arc-slot,
+  .cw-arc-item__frame {
+    transition: none;
+  }
+}
