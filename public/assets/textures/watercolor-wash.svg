@@ -2,31 +2,31 @@
   <defs>
     <!-- Soft fluid wet-on-wet watercolor gradient washes -->
     <linearGradient id="wc-grad-main" x1="6%" y1="92%" x2="94%" y2="8%">
-      <stop offset="0%" stop-color="#c46684" />
-      <stop offset="28%" stop-color="#9e3d5f" />
-      <stop offset="58%" stop-color="#6c1e3d" />
-      <stop offset="85%" stop-color="#48102a" />
-      <stop offset="100%" stop-color="#35091d" />
+      <stop offset="0%" stop-color="#c68398" />
+      <stop offset="28%" stop-color="#a35b73" />
+      <stop offset="58%" stop-color="#7c3852" />
+      <stop offset="85%" stop-color="#5e293f" />
+      <stop offset="100%" stop-color="#4c2033" />
     </linearGradient>
 
     <linearGradient id="wc-grad-rose-bleed" x1="0%" y1="75%" x2="88%" y2="18%">
-      <stop offset="0%" stop-color="#eb9cb4" stop-opacity="0.72" />
-      <stop offset="38%" stop-color="#cf6f8d" stop-opacity="0.56" />
-      <stop offset="72%" stop-color="#8c2b4d" stop-opacity="0.28" />
-      <stop offset="100%" stop-color="#531430" stop-opacity="0" />
+      <stop offset="0%" stop-color="#e6aab9" stop-opacity="0.68" />
+      <stop offset="38%" stop-color="#cc8499" stop-opacity="0.52" />
+      <stop offset="72%" stop-color="#934b64" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#682e45" stop-opacity="0" />
     </linearGradient>
 
     <linearGradient id="wc-grad-berry-pool" x1="88%" y1="88%" x2="18%" y2="14%">
-      <stop offset="0%" stop-color="#3a0a21" stop-opacity="0.78" />
-      <stop offset="44%" stop-color="#691b3b" stop-opacity="0.52" />
-      <stop offset="78%" stop-color="#a84667" stop-opacity="0.22" />
-      <stop offset="100%" stop-color="#d47896" stop-opacity="0" />
+      <stop offset="0%" stop-color="#522438" stop-opacity="0.72" />
+      <stop offset="44%" stop-color="#7b3853" stop-opacity="0.48" />
+      <stop offset="78%" stop-color="#a85d76" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#ce889f" stop-opacity="0" />
     </linearGradient>
 
     <linearGradient id="wc-grad-center-glow" x1="22%" y1="15%" x2="76%" y2="85%">
-      <stop offset="0%" stop-color="#d97b98" stop-opacity="0.54" />
-      <stop offset="48%" stop-color="#9f3b5e" stop-opacity="0.34" />
-      <stop offset="100%" stop-color="#450e27" stop-opacity="0.12" />
+      <stop offset="0%" stop-color="#d48ca1" stop-opacity="0.5" />
+      <stop offset="48%" stop-color="#a1566f" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#5d293e" stop-opacity="0.12" />
     </linearGradient>
 
     <!-- Organic fluid distortion & feathered watercolor diffusion -->
@@ -69,9 +69,9 @@
 
   <!-- Delicate watercolor backruns / watered blooms & translucent pigment edges -->
   <g filter="url(#wc-halo)">
-    <path d="M130,520 C270,460 440,540 420,700 C400,840 210,880 90,780 C-10,690 20,570 130,520 Z" fill="#e99ab3" fill-opacity="0.22" stroke="#781f40" stroke-opacity="0.24" stroke-width="18" />
-    <path d="M620,250 C780,190 960,280 930,440 C900,590 710,630 580,530 C470,440 500,300 620,250 Z" fill="#d97b98" fill-opacity="0.18" stroke="#5b1533" stroke-opacity="0.22" stroke-width="16" />
-    <path d="M1080,220 C1260,170 1450,270 1410,450 C1370,610 1160,650 1030,540 C910,440 940,260 1080,220 Z" fill="#460f28" fill-opacity="0.34" stroke="#2c0618" stroke-opacity="0.26" stroke-width="14" />
+    <path d="M130,520 C270,460 440,540 420,700 C400,840 210,880 90,780 C-10,690 20,570 130,520 Z" fill="#e3a8b9" fill-opacity="0.22" stroke="#853d56" stroke-opacity="0.22" stroke-width="18" />
+    <path d="M620,250 C780,190 960,280 930,440 C900,590 710,630 580,530 C470,440 500,300 620,250 Z" fill="#d28da2" fill-opacity="0.18" stroke="#6f3049" stroke-opacity="0.2" stroke-width="16" />
+    <path d="M1080,220 C1260,170 1450,270 1410,450 C1370,610 1160,650 1030,540 C910,440 940,260 1080,220 Z" fill="#5e293f" fill-opacity="0.3" stroke="#471c2f" stroke-opacity="0.24" stroke-width="14" />
   </g>
 
   <!-- Uneven pigment granulation mottling across the watercolor paper -->

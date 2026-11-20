@@ -20,15 +20,9 @@ const BACKDROP_STARS = [
   { top: '49%', right: '6%', size: 26, rot: -20 },
 ];
 
-function getCircularDelta(index: number, activeIndex: number, total: number): number {
-  const raw = (index - activeIndex + total) % total;
-  return raw > Math.floor(total / 2) ? raw - total : raw;
-}
-
 export const WorkPage: React.FC = () => {
-  // Start with 03 centered at top apex matching the 01..05 left-to-right arc order
-  const [activeIndex, setActiveIndex] = useState<number>(2);
-  const [wrappingIndex, setWrappingIndex] = useState<number | null>(null);
+  // Balanced 4-record upper-arc arrangement (01..04) with spotlight stepping cleanly across tracks
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [detailOpen, setDetailOpen] = useState<boolean>(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
   const [isHoveringStage, setIsHoveringStage] = useState<boolean>(false);
@@ -41,21 +35,7 @@ export const WorkPage: React.FC = () => {
 
   const stepCarousel = useCallback(
     (direction: 1 | -1) => {
-      setActiveIndex((prev) => {
-        const next = (prev + direction + totalCount) % totalCount;
-        // Identify the single card wrapping from bottom-left to bottom-right (or vice versa)
-        // so it snaps quietly without cutting across the center pink label.
-        const wrappingIdx = WORK_SKELETON_PROJECTS.findIndex((_, idx) => {
-          const prevDelta = getCircularDelta(idx, prev, totalCount);
-          const nextDelta = getCircularDelta(idx, next, totalCount);
-          return Math.abs(nextDelta - prevDelta) > 2;
-        });
-        setWrappingIndex(wrappingIdx >= 0 ? wrappingIdx : null);
-        window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(() => setWrappingIndex(null));
-        });
-        return next;
-      });
+      setActiveIndex((prev) => (prev + direction + totalCount) % totalCount);
     },
     [totalCount]
   );
@@ -63,7 +43,6 @@ export const WorkPage: React.FC = () => {
   const jumpCarouselTo = useCallback(
     (targetIndex: number) => {
       if (targetIndex === activeIndex) return;
-      setWrappingIndex(null);
       setActiveIndex(targetIndex);
     },
     [activeIndex]
@@ -202,7 +181,7 @@ export const WorkPage: React.FC = () => {
             </div>
           </header>
 
-          {/* Giant Rising Vinyl LP + Orbiting 5 Colored-Border Square Artworks */}
+          {/* Giant Rising Vinyl LP + Orbiting 4 Colored-Border Square Artworks */}
           <div
             ref={stageRef}
             className="cw-turntable-stage"
@@ -218,19 +197,15 @@ export const WorkPage: React.FC = () => {
             <div className="cw-turntable-hub">
               <VinylRecordAnchor />
 
-              {WORK_SKELETON_PROJECTS.map((project, index) => {
-                const delta = getCircularDelta(index, activeIndex, totalCount);
-                return (
-                  <WorkPolaroidItem
-                    key={project.id}
-                    project={project}
-                    slotDelta={delta}
-                    isActiveSpotlight={delta === 0}
-                    isWrapping={wrappingIndex === index}
-                    onSelect={() => handleOpenProject(index)}
-                  />
-                );
-              })}
+              {WORK_SKELETON_PROJECTS.map((project, index) => (
+                <WorkPolaroidItem
+                  key={project.id}
+                  project={project}
+                  slotIndex={index}
+                  isActiveSpotlight={index === activeIndex}
+                  onSelect={() => handleOpenProject(index)}
+                />
+              ))}
             </div>
 
             {/* Crisp Carousel Controls Dock anchored along bottom rim of turntable */}
